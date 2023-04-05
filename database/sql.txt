@@ -1,0 +1,10 @@
+Export-
+mysqldump -u root -p [database name] > [path/file.sql]
+mysqldump -u root -p rad_project > C:\Users\Asus\Desktop\file.sql
+
+Import
+mysql -u root -p [database_name] < [path/file.sql]
+mysql -u root -p rad_project < C:\Users\Asus\Desktop\apr5.sql
+
+xampp > mysql > bin (open in cmd)
+cd C:\xampp\mysql\bin
