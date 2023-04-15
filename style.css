@@ -10,11 +10,11 @@
     --white_1: #FFF;
 }
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 body {
     background-image: linear-gradient(to right,var(--orange_2), var(--orange_1));
@@ -44,4 +44,26 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.sub_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.sub_holder{
+    border:  2px solid black;
+    width: 27%;
+    min-height: 200px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.selection_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* align-items: center; */
 }

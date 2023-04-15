@@ -2,7 +2,7 @@
 
     require_once("config.php");
 
-    if(!isset($_SESSION["current_index"])){
+    if(!isset($_SESSION["current_student_id"])){
         header("Location:index.php?result=Please Login First");
     }
 
@@ -18,18 +18,51 @@
 <body>
     Dashboard
     <?php 
-        echo "Login as: ". $_SESSION["current_index"];
+        echo "<p>Login as: ". $_SESSION["current_student_index"]. "</p>";
 
-        $current_index = $_SESSION["current_index"];
+        $current_index = $_SESSION["current_student_index"];
 
-        $getname_query = "SELECT first_name, last_name FROM test_users WHERE index_number = '$current_index'";
-        if($q_return = mysqli_query($conn, $getname_query)){
-            $names = mysqli_fetch_assoc($q_return);
-            echo "<br />" . $names['first_name']. " " . $names['last_name'];
+        $get_st_details_query = "SELECT student_initials_name, student_nic_number, student_image, student_base_comb FROM student_table WHERE student_index_number = $current_index";
+        if($q_return = mysqli_query($conn, $get_st_details_query)){
+            $st_details = mysqli_fetch_assoc($q_return);
+
+            // Initialzing Session Variables
+            $_SESSION['current_base_comb'] = $st_details['student_base_comb'];
+            $_SESSION['current_image'] = $st_details['student_image'];
+            $_SESSION['current_nic_number'] = $st_details['student_nic_number'];
+
+            echo "<img src = 'images/students/".$st_details['student_image']."'/ style = 'width:180px'>";
+            echo "<p>" . $st_details['student_initials_name']. "</p>";
+            echo "<p>" . $st_details['student_nic_number']."</p>";
         }
     ?>
     <form action="logout.php" method="POST">
         <input type="submit" value="Logout">
     </form>
+
+    <div>
+        <table>
+            <tr>
+                <td>1st Year Registration</td>
+                <td><a href=""><input type="button" value="Select" disabled></a></td>
+            </tr>
+            <tr>
+                <td>2nd Year Registration</td>
+                <td><a href=""><input type="button" value="Select" disabled></a></td>
+            </tr>
+            <tr>
+                <td>3rd Year Selection Forms</td>
+                <td><a href="third_year_selection.php"><input type="button" value="Select"></a></td>
+            </tr>
+            <tr>
+                <td>3rd Year Registration</td>
+                <td><a href=""><input type="button" value="Select" disabled></a></td>
+            </tr>
+            <tr>
+                <td>4th Year Registration</td>
+                <td><a href=""><input type="button" value="Select" disabled></a></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

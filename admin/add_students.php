@@ -40,6 +40,18 @@
         <button type = "submit" name = "Import">Submit</button>
 
     </form>
+    <p>-- or --</p>
+    <form action="">
+        <label for="index">Index: </label>
+        <input type="text" id = "index" name = "index">
+
+        <label for="name">Name: </label>
+        <input type="text" name = "name" id = "name">
+
+        <label for="combination">Combination : </label>
+        <input type="text" name = "combination" id = "combination">
+        <input type="submit" value="Submit">
+    </form>
         
 </body>
 </html>

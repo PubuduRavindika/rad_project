@@ -2,7 +2,7 @@
 
     require_once("config.php");
 
-    if(isset($_SESSION["current_index"])){
+    if(isset($_SESSION["current_student_id"])){
         header("Location:dashboard.php");
     }
 
@@ -28,7 +28,7 @@
                 echo "<p>".$_GET['result']."</p>";
             }
             ?>
-            <form action="login.php" method="POST">
+            <form action="login_validation.php" method="POST">
                 <label for="index">Index: </label>
                 <input type="text" id="index" name="index">
                 <label for="password">Password: </label>
