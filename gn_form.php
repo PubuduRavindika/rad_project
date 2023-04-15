@@ -410,7 +410,7 @@ else{
             <td><span id = "year_total_credits_count"></span></td>
         </tr>
     </table>
-    <form action="jm_form_adder.php">
+    <form action="gn_form_adder.php">
         <input type="submit" value = "Submit" id = "btn_submit" disabled>
     </form>
     <script src = "script.js"></script>
