@@ -5,6 +5,11 @@ require_once("config.php");
 if(isset($_GET["q"]) && isset($_GET["choice"])){
     $general_comb = $_GET["q"];
     $comb_choice = $_GET["choice"];
+
+    // Initialzing Session variables
+    $_SESSION["gn_comb"] = $general_comb;
+    $_SESSION["gn_choice"] = $comb_choice;
+
     echo "Choice: ".$comb_choice." <br />";
     // $general_query = "SELECT gn_code,gn_gn_sub_1, gn_gn_sub_2 FROM gn_table WHERE gn_code = '$general_comb'";
     $general_query = "SELECT gn_comb_id, gn_comb_name, gn_sub_1_id, gn_sub_2_id, gn_sub_3_id FROM gn_combinations_table WHERE gn_comb_id = '$general_comb'";
@@ -46,6 +51,10 @@ if(isset($_GET["q"]) && isset($_GET["choice"])){
     // if($q_return = mysqli_query($conn, $get_compulsory_modules_gn_sub_2_query)){
     //     $gn_sub_2_compulsory_modules = mysqli_fetch_assoc[$q_return];
     // }
+    $base_combination = $_SESSION['current_base_comb'];
+    $current_image = $_SESSION['current_image'];
+    $current_nic = $_SESSION['current_nic_number'];
+    $current_st_name = $_SESSION['current_student_name'];
 }
 else{
     echo "Something went wrong";
@@ -401,8 +410,9 @@ else{
             <td><span id = "year_total_credits_count"></span></td>
         </tr>
     </table>
-    <p></p>
-    <button id = "btn_submit" disabled>Submit</button>
+    <form action="jm_form_adder.php">
+        <input type="submit" value = "Submit" id = "btn_submit" disabled>
+    </form>
     <script src = "script.js"></script>
 </body>
 </html>
