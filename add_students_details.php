@@ -55,7 +55,7 @@
             <label for="st_password">New Password: </label>
             <input type="password" name="st_password" id="st_password" required> 
 
-            <label for="st_password_confirm">Image: </label>
+            <label for="st_password_confirm">Confirm Password: </label>
             <input type="password" name="st_password_confirm" id="st_password_confirm" required>
 
             <input type="submit" name="" id="" value = "Submit">

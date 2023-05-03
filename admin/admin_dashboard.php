@@ -26,7 +26,7 @@
             echo "Login as: " . $names['first_name']. " " . $names['last_name'];
         }
     ?>
-    <form action="admin_logout.php" method="POST">
+    <form action="action_admin_logout.php" method="POST">
         <input type="submit" value="Logout">
     </form>
 

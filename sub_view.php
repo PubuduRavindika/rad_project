@@ -193,9 +193,11 @@ if(!($general_subjects == array_unique($general_subjects))){
                         
                         $submission_check_query = "SELECT gn_choice_$gn_choice FROM selection_form_table WHERE student_id = $current_index";
                         if($q_return = mysqli_query($conn, $submission_check_query)){
-                            $submission_result = mysqli_fetch_assoc($q_return);
-                            if($submission_result['gn_choice_'.$gn_choice] == $general_subject){
-                                echo "<span> - DONE - </span>";
+                            if(mysqli_num_rows($q_return) > 0){
+                                $submission_result = mysqli_fetch_assoc($q_return);
+                                if($submission_result['gn_choice_'.$gn_choice] == $general_subject){
+                                    echo "<span> - DONE - </span>";
+                                }
                             }
                         }
                     }

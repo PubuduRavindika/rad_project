@@ -19,7 +19,7 @@
     Add New Students
 
     <p>Choose Academic Year :</p>
-    <form action="students_adder.php" method = "POST"  enctype="multipart/form-data">
+    <form action="action_students_adder.php" method = "POST"  enctype="multipart/form-data">
     <?php
     
         $get_table_query = "SELECT * FROM test_students_tables";

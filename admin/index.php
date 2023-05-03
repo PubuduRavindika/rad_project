@@ -28,7 +28,7 @@
                 echo "<p>".$_GET['result']."</p>";
             }
             ?>
-            <form action="admin_login.php" method="POST">
+            <form action="action_admin_login.php" method="POST">
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username">
                 <label for="password">Password: </label>

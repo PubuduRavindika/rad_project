@@ -52,7 +52,7 @@ if(isset($_POST["Import"])){
                     echo "Added Sucessfull \n";
                 }
                 else {
-                    echo "Error" . mysqli_error();
+                    echo "Error";
                 }
 
            }
