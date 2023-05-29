@@ -1,66 +1,37 @@
 <?php
-
 require_once("../config.php");
 
-$ac_year = $_POST["academic_year"];
-echo "Acdemic year = " . $ac_year;
+if(!isset($_SESSION["current_admin"])){
+    header("Location:index.php?result=Please Login First");
+}
+ 
 
-if(isset($_POST["Import"])){
-    
-    $filename=$_FILES["file"]["tmp_name"];
-    echo $filename;
+if(isset($_POST['index']) && isset($_POST['name']) && isset($_POST['nic_number']) && isset($_POST['combination']) && isset($_POST['batch_id'])){
 
-    if($_FILES["file"]["size"] > 0)
-     {
-        $file = fopen($filename, "r");
-
-
-        echo "
-        <table>
-        <tr>
-            <th>Index</th>
-            <th>Name</th>
-            <th>ID No</th>
-        </tr>
-        ";
-        
-        $table_select_query = "SELECT table_name FROM test_students_tables WHERE table_id = $ac_year";
-        
-        $table_name;
-        
-        if($q_return = mysqli_query($conn,$table_select_query)){
-            $table_name = mysqli_fetch_assoc($q_return);
-        }
-
-          while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
-           {
-                // echo "
-                //     <tr>
-                //     <td>".$getData[0]."</td>
-                //     <td>".$getData[1]."</td>
-                //     <td>".$getData[2]."</td>
-                //     </tr>
-                
-                // ";
-                
-
-                $add_students_query = "INSERT INTO ".$table_name['table_name']."(st_index,st_name,st_com) VALUES (".$getData[0].",\"".$getData[1]."\",".$getData[2].")";
-
-                // echo "<br />" . $add_students_query;
-
-                if($q_return = mysqli_query($conn, $add_students_query)){
-                    echo "Added Sucessfull \n";
-                }
-                else {
-                    echo "Error";
-                }
-
-           }
-
-        //    echo "
-        //         </table>
-        //    ";
+    // For Security reasons
+    function validate($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
+    $index = validate($_POST['index']);
+    $name = validate($_POST['name']);
+    $nic_number = validate($_POST['nic_number']);
+    $combination = validate($_POST['combination']);
+    $batch_id = validate($_POST['batch_id']);
+
+    $student_add_query = "INSERT INTO student_table (student_index_number, student_nic_number, student_initials_name,student_batch_id, student_base_comb,student_password, student_first_time_login) VALUES ('$index', '$nic_number', '$name', '$batch_id', '$combination','$nic_number' ,'1')";
+
+    echo $student_add_query;
+
+    if(mysqli_query($conn,$student_add_query)){
+        echo "Success";
+    }
+    else{
+        echo "Something went wrong!!";
+    }
 }
+
 ?>

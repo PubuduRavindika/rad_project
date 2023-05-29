@@ -30,6 +30,10 @@
         <input type="submit" value="Logout">
     </form>
 
-    <a href="add_students.php">Add New Students</a>
+    <ul>
+        <li><a href="add_students.php">Add New Students</a></li>
+        <li><a href="add_students.php">Add Department Heads</a></li>
+        <li><a href="add_students.php">Add Student Counsellor</a></li>
+    </ul>
 </body>
 </html>

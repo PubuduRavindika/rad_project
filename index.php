@@ -38,6 +38,7 @@
                 </div>
             </form>
         </div>
+        <a href="admin">Log in as a admin</a>
     </section>
 </body>
 </html>
