@@ -1,5 +1,6 @@
 <?php
-    require_once("config.php");
+    require "../../config/config.php";
+    
     $current_index = $_SESSION['current_student_index'];
     $jm_choice = $_SESSION['jm_choice'];
     $jm_comb = $_SESSION['jm_comb'];

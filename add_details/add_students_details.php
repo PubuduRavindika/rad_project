@@ -1,8 +1,8 @@
 <?php
-    require_once("config.php");
+    require "../config/config.php";
 
     if(!isset($_SESSION["current_student_id"])){
-        header("Location:index.php?result=Please Login First");
+        header("Location:../login/login.php?result=Please Login First");
     }
 
     $current_student_id = $_SESSION['current_student_id'];
@@ -27,7 +27,7 @@
     <div>
         <p>Login as: <?php echo $student_details['student_initials_name']?></p>
         <p>Index: <?php echo $student_details['student_index_number']?></p>
-        <form action="logout.php" method="POST">
+        <form action="../logout/logout.php" method="POST">
             <input type="submit" value="Logout">
         </form>
     </div>
@@ -50,7 +50,7 @@
             <label for="st_image">Image: </label>
             <input type="file" accept = ".jpg, .png, .jpeg" name="st_image" id="st_image" onchange = "imgPreview(this)" required>
 
-            <img src = "images/180.png" id = "st_image_preview" style = "max-width:180px;"/ >
+            <img src = "../assets/images/180.png" id = "st_image_preview" style = "max-width:180px;"/ >
 
             <label for="st_password">New Password: </label>
             <input type="password" name="st_password" id="st_password" required> 
@@ -63,6 +63,6 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../assets/script.js"></script>
 </body>
 </html>

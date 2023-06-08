@@ -1,11 +1,22 @@
 <?php
 
 
-require_once("config.php");
+require "../config/config.php";
+
 $base_combination = $_SESSION['current_base_comb'];
 $current_image = $_SESSION['current_image'];
 $current_nic = $_SESSION['current_nic_number'];
 $current_st_name = $_SESSION['current_student_name'];
+$current_st_index = $_SESSION["current_student_index"];
+
+
+$sql = "SELECT * FROM selection_form_table WHERE student_index_number = $current_st_index";
+$result = mysqli_query($conn, $sql);
+
+if(mysqli_num_rows($result) > 0){
+    header("Location:sub_view.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,22 +27,33 @@ $current_st_name = $_SESSION['current_student_name'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <?php
+    if(isset($_GET["error"]))
+        echo "
+            <script>
+                alert('Invalid Choice!');
+            </script>
+        ";
+    ?>
+
 </head>
 
 <body>
     <div>
         <?php
-            echo "<img src = 'images/students/".$current_image."'style = 'width:180px'/>";
+            echo "<img src = '../assets/images/students/".$current_image."'style = 'width:180px'/>";
             echo "<p>" . $current_st_name. "</p>";
             echo "<p>" . $current_nic."</p>";
         ?>
-        <form action="logout.php" method="POST">
+        <form action="../logout/logout.php" method="POST">
             <input type="submit" value="Logout">
         </form>
     </div>
     <div class="main_container">
-        <form action="sub_view.php" method="POST">
+        <!-- <form action="sub_view.php" method="POST"> -->
+        <form action="view_selected.php" method="POST">
             <div class="sub_container">
                 <div class="sub_holder" onchange="special_selection_enabler()">
                     <h4>Special Subject</h4>
@@ -221,7 +243,7 @@ $current_st_name = $_SESSION['current_student_name'];
     </div>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="../assets/script.js"></script>
 </body>
 
 </html>

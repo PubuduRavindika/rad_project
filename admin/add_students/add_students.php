@@ -1,9 +1,9 @@
 <?php
 
-    require_once("../config.php");
+    require "../../config/config.php";
 
     if(!isset($_SESSION["current_admin"])){
-        header("Location:index.php?result=Please Login First");
+        header("Location:../login/login.php?result=Please Login First");
     }
 
 ?>
@@ -34,7 +34,7 @@
     ?>
         <br />
         <p>Accepted CSV format:</p>
-        <img src="../images/csv_format.jpg" alt="Accepted CSV format">
+        <img src="../../assets/images/csv_format.jpg" alt="Accepted CSV format">
         <br />
         <label for="file">Select CSV file:</label>
         <input type="file" name="file" id="file" accept=".csv" required>
@@ -53,7 +53,6 @@
         <input type="text" name = "nic_number" id = "nic_number" required>
 
         <label for="combination">Base Combination: </label>
-        <!-- <input type="text" name = "combination" id = "combination"> -->
         <select name = "combination" id = "combination" required>
             <option value = "1">1</option>
             <option value = "2">2</option>

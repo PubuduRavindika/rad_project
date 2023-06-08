@@ -1,9 +1,9 @@
 <?php
 
-    require_once("../config.php");
+    require "../../config/config.php";
 
     if(!isset($_SESSION["current_admin"])){
-        header("Location:index.php?result=Please Login First");
+        header("Location:../login/login.php?result=Please Login First");
     }
 
 ?>
@@ -26,14 +26,15 @@
             echo "Login as: " . $names['first_name']. " " . $names['last_name'];
         }
     ?>
-    <form action="action_admin_logout.php" method="POST">
+    <form action="../logout/action_admin_logout.php" method="POST">
         <input type="submit" value="Logout">
     </form>
 
     <ul>
-        <li><a href="add_students.php">Add New Students</a></li>
-        <li><a href="add_students.php">Add Department Heads</a></li>
-        <li><a href="add_students.php">Add Student Counsellor</a></li>
+        <li><a href="../add_students/add_students.php">Add New Students</a></li>
+        <li><a href="../add_management/add_management.php">Add Management Assistants</a></li>
+        <li><a href="../add_hod/add_department_heads.php">Add Department Heads</a></li>
+        <li><a href="../add_counsellor/add_student_counsellor.php">Add Student Counsellor</a></li>
     </ul>
 </body>
 </html>

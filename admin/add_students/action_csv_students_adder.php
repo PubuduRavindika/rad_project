@@ -11,7 +11,7 @@
 <body>
     <?php
 
-    require_once("../config.php");
+    require "../../config/config.php";
 
     if (isset($_POST["Import"])) {
 

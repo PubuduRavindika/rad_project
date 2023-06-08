@@ -1,6 +1,6 @@
 <?php
 
-require_once("config.php");
+require "../../config/config.php";
 
 if(isset($_GET["q"]) && isset($_GET["choice"])){
     $jmajor_comb = $_GET["q"];
@@ -63,11 +63,11 @@ else{
 <body onload = "get_credits_total()" onchange = "get_credits_total()">
     <div>
         <?php
-            echo "<img src = 'images/students/".$current_image."'style = 'width:180px'/>";
+            echo "<img src = '../../assets/images/students/".$current_image."'style = 'width:180px'/>";
             echo "<p>" . $current_st_name. "</p>";
             echo "<p>" . $current_nic."</p>";
         ?>
-        <form action="logout.php" method="POST">
+        <form action="../../logout/logout.php" method="POST">
             <input type="submit" value="Logout">
         </form>
     </div>
@@ -331,6 +331,6 @@ else{
     <form action="jm_form_adder.php">
         <input type="submit" value = "Submit" id = "btn_submit" disabled>
     </form>
-    <script src = "script.js"></script>
+    <script src = "../../assets/script.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-require_once("config.php");
+require "../config/config.php";
 
 if(isset($_POST['index']) && isset($_POST['password'])){
 
@@ -16,7 +16,7 @@ if(isset($_POST['index']) && isset($_POST['password'])){
     $password = validate($_POST['password']);
 
     if(empty($index) || empty($password)){
-        header("Location:index.php?result=Invalid username or password.");
+        header("Location:login.php?result=Invalid username or password.");
     }
     else {
         $login_query = "SELECT student_index_number, student_initials_name ,student_id,student_password,student_first_time_login FROM student_table WHERE student_index_number = '$index'";
@@ -32,14 +32,14 @@ if(isset($_POST['index']) && isset($_POST['password'])){
                 $_SESSION["current_student_name"] = $login_result['student_initials_name'];
 
                 if($login_result['student_first_time_login']){
-                    header("Location:add_students_details.php");
+                    header("Location:../add_details/add_students_details.php");
                 }
                 else{
-                    header("Location:dashboard.php");
+                    header("Location:../dashboard/dashboard.php");
                 }
             }
             else{
-                header("Location:index.php?result=Invalid Password!");
+                header("Location:login.php?result=Invalid Password!");
             }
         }
         else{
@@ -49,7 +49,7 @@ if(isset($_POST['index']) && isset($_POST['password'])){
 
 }
 else{
-    header("Location:index.php");
+    header("Location:login.php");
 }
 
 ?>

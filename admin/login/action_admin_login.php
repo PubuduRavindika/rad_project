@@ -1,6 +1,6 @@
 <?php
 
-require_once("../config.php");
+require ("../../config/config.php");
 
 if(isset($_POST['username']) && isset($_POST['password'])){
 
@@ -16,7 +16,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $password = validate($_POST['password']);
 
     if(empty($username) || empty($password)){
-        header("Location:index.php?result=Invalid username or password.");
+        header("Location:login.php?result=Invalid username or password.");
     }
     else {
         $login_query = "SELECT password FROM test_admins WHERE username = '$username'";
@@ -26,10 +26,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             if($q_result['password'] == $password){
                 echo "Login Successful!";
                 $_SESSION["current_admin"] = $username;
-                header("Location:admin_dashboard.php");
+                header("Location:../dashboard/admin_dashboard.php");
             }
             else{
-                header("Location:index.php?result=Invalid Password!");
+                header("Location:login.php?result=Invalid Password!");
             }
         }
         else{
@@ -39,7 +39,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
 }
 else{
-    header("Location:index.php");
+    header("Location:login.php");
 }
 
 ?>

@@ -1,8 +1,8 @@
 <?php
-require_once("../config.php");
+require "../../config/config.php";
 
 if(!isset($_SESSION["current_admin"])){
-    header("Location:index.php?result=Please Login First");
+    header("Location:../login/login.php?result=Please Login First");
 }
  
 
@@ -33,5 +33,3 @@ if(isset($_POST['index']) && isset($_POST['name']) && isset($_POST['nic_number']
         echo "Something went wrong!!";
     }
 }
-
-?>

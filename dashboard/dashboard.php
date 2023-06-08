@@ -1,9 +1,9 @@
 <?php
 
-    require_once("config.php");
+    require "../config/config.php";
 
     if(!isset($_SESSION["current_student_id"])){
-        header("Location:index.php?result=Please Login First");
+        header("Location:../login/login.php?result=Please Login First");
     }
 
 ?>
@@ -31,12 +31,12 @@
             $_SESSION['current_image'] = $st_details['student_image'];
             $_SESSION['current_nic_number'] = $st_details['student_nic_number'];
 
-            echo "<img src = 'images/students/".$st_details['student_image']."'/ style = 'width:180px'>";
+            echo "<img src = '../assets/images/students/".$st_details['student_image']."'/ style = 'width:180px'>";
             echo "<p>" . $st_details['student_initials_name']. "</p>";
             echo "<p>" . $st_details['student_nic_number']."</p>";
         }
     ?>
-    <form action="logout.php" method="POST">
+    <form action="../logout/logout.php" method="POST">
         <input type="submit" value="Logout">
     </form>
 
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>3rd Year Selection Forms</td>
-                <td><a href="third_year_selection.php"><input type="button" value="Select"></a></td>
+                <td><a href="../third_year_selection/third_year_selection.php"><input type="button" value="Select"></a></td>
             </tr>
             <tr>
                 <td>3rd Year Registration</td>

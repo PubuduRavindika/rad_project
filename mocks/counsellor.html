@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Counsellor</title>
+</head>
+
+<body>
+    <h3>Joint Major Application | Review</h3>
+    <h4>Level 3</h4>
+    <table>
+        <tr>
+            <td>Register No:</td>
+            <td>192153</td>
+        </tr>
+        <tr>
+            <td>Name in Full:</td>
+            <td>Dulakshan Isurujith Wijesundara</td>
+        </tr>
+        <tr>
+            <td>Subject Combination:</td>
+            <td>1A</td>
+        </tr>
+        <tr>
+            <td>Image:</td>
+            <td><img src="profile-4.png" alt="" width="100px"></td>
+        </tr>
+    </table>
+    <div style="display: flex;">
+        <div style="width: 50%;">
+            <h3>Semester 1 - Compulsary Modules</h3>
+            <table border="1px">
+                <tr>
+                    <th>Module Code</th>
+                    <th>Title of the Compulsary Module</th>
+                    <th>No. of Credits</th>
+                </tr>
+                <tr>
+                    <td>CMIS 3122</td>
+                    <td>Rapid Application Development</td>
+                    <td name="sem_1_comp_credits">2</td>
+                </tr>
+                <tr>
+                    <td>CMIS 3114</td>
+                    <td>Data Communication &amp; Comp. Networks</td>
+                    <td name="sem_1_comp_credits">4</td>
+                </tr>
+                <tr>
+                    <td>ELTN 3113</td>
+                    <td>Digital Electronics</td>
+                    <td name="sem_1_comp_credits">3</td>
+                </tr>
+                <tr>
+                    <td>ELTN 3121</td>
+                    <td>Digital Electronics - Lab</td>
+                    <td name="sem_1_comp_credits">1</td>
+                </tr>
+                <tr>
+                    <td>ELTN 3133</td>
+                    <td>Data Acquisition and Signal Processing</td>
+                    <td name="sem_1_comp_credits">3</td>
+                </tr>
+                <tr>
+                    <td>ELTN 3141</td>
+                    <td>Data Acquisition and Signal Processing - Lab</td>
+                    <td name="sem_1_comp_credits">1</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total Credits of Compulory: </td>
+                    <td><span id="compulsory_credits_count_semseter_1">14</span></td>
+                </tr>
+            </table>
+                <h3>Semester 1 - Optional Modules</h3>
+            <table border="1px">
+                <tr>
+                    <th>Module Code</th>
+                    <th>Title of the Optional Module</th>
+                    <th>No. of Credits</th>
+                </tr>
+                            <tr>
+                                <td>CMIS 3134</td>
+                                <td>Computer Architecture &amp; Compiler Design</td>
+                                <td name="sem_1_subs_credits" id="sem_1_subs_credits_1">4</td>
+                            </tr>
+        
+                                    <tr>
+                    <td colspan="2">Total Credits of Optional: </td>
+                    <td><span id="semester_1_total_optional_count">4</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>Total Credits of Semester: </strong></td>
+                    <td><span id="semester_1_total_credits_count">18</span></td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <div style="width:50%">
+            <form action="">
+                <label for="comment">Comment</label>
+                <br>
+                <textarea name="" id="comment" cols="70" rows="10"></textarea>
+                <br><br>
+                <input type="checkbox" name=" " id="approve">
+                <label for="approve">Approve</label>
+                <input type="checkbox" name=" " id="reject">
+                <label for="reject">Reject</label>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

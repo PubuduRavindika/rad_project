@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require "../config/config.php";
 
 $current_student_id;
 if(isset($_SESSION['current_student_id'])){
@@ -7,7 +7,7 @@ if(isset($_SESSION['current_student_id'])){
     $current_student_index = $_SESSION['current_student_index'];
 }
 else{
-    header("Location:index.php?result='Login First'");
+    header("Location:../login/login.php?result='Login First'");
 }
  
 
@@ -39,7 +39,7 @@ if(isset($_POST['st_full_name']) && isset($_POST['st_telephone']) && isset($_POS
 
             $new_image_name = "IMG-". $current_student_index.".".$img_extesion;
 
-            move_uploaded_file($st_image_temp_name, "images/students/".$new_image_name);
+            move_uploaded_file($st_image_temp_name, "../assets/images/students/".$new_image_name);
 
             $set_students_details_query = "UPDATE student_table SET student_full_name = '$st_full_name', student_telephone_number = '$st_telephone', student_email = '$st_email', student_password = '$st_password', student_image = '$new_image_name', student_first_time_login = 0 WHERE student_id = $current_student_id";
 
@@ -51,7 +51,7 @@ if(isset($_POST['st_full_name']) && isset($_POST['st_telephone']) && isset($_POS
                 // $q_return = mysqli_query($conn, $sql);
                 // $result = mysqli_fetch_assoc($q_return);
                 // echo "<img src = 'images/students/".$result['student_image']."'>";
-                header("Location:dashboard.php");
+                header("Location:../dashboard/dashboard.php");
             }
             else{
                 echo "Something went wrong";
@@ -65,6 +65,4 @@ if(isset($_POST['st_full_name']) && isset($_POST['st_telephone']) && isset($_POS
 
 }
 else{
-    // header("Location:index.php");
-    echo $_FILES['st_image'];
 }?>
