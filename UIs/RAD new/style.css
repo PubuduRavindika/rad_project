@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.cp-body{
+    padding: 0;
+    margin: 0;
+    background-image: url("https://fas.wyb.ac.lk/wp-content/uploads/2020/10/online-programming-course-hero-section-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.cp-container{
+    width: 430px;
+    margin: 130px auto;
+    position: relative;
+    
+}
+
+.cp-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.cp-h1-header{
+    font-size: 35px;
+    margin: 0px;
+}
+
+.cp-p-header{
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.cp-form-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cp-form-item{
+    margin: 3px;
+}
+
+.cp-newpassword-label{
+    display: inline-block;
+    background-color: white;
+    margin-bottom: 10px;
+    position: absolute;
+    padding: 0 10px;
+    transform: translate(30px, -8px);
+    font-size: 14px;
+}
+
+.cp-confirmpassword-label{
+    display: inline-block;
+    background-color: white;
+    margin-bottom: 10px;
+    position: absolute;
+    padding: 0 10px;
+    transform: translate(30px, -8px);
+    font-size: 14px;
+}
+
+.cp-newpassword{
+    border: 1px solid black;
+    height: 55px;
+    width: 100%;
+    font-size: 18px;
+    padding: 0 32px;
+    outline: none;
+    border-radius: 100px;
+    color: #707070;
+}
+
+.cp-confirmpassword{
+    border: 1px solid black;
+    height: 55px;
+    width: 100%;
+    font-size: 18px;
+    padding: 0 32px;
+    outline: none;
+    border-radius: 100px;
+    color: #707070;
+}
+
+button{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 18px;
+    height: 55px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #da831a;
+}
+
+/* Responsive */
+
+@media (max-width:1200px){
+    .cp-body{
+        display: flex;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width:768px){
+    .cp-body{
+        display: flex;
+        align-items: center;
+    }
+
+}

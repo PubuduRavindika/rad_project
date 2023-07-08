@@ -25,7 +25,6 @@ if(mysqli_num_rows($result) > 0){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="style.css"/>
     <title>Third Year Selection Form</title>
 
@@ -49,26 +48,11 @@ if(mysqli_num_rows($result) > 0){
         </div>
     </div> -->
     <?php
-        // echo "<img src = '../assets/images/students/".$current_image."'style = 'width:180px'/>";
-        // echo "<p>" . $current_st_name. "</p>";
-        // echo "<p>" . $current_nic."</p>";
+        echo "<img src = '../assets/images/students/".$current_image."'style = 'width:180px'/>";
+        echo "<p>" . $current_st_name. "</p>";
+        echo "<p>" . $current_nic."</p>";
     ?>
     
-    <div class="nav_container">
-        <div class="nav_title">
-            Student Registration System | WUSL
-        </div>
-        <div class="nav_details">
-            <span>
-                <p><?php echo $current_st_name?></p>
-                <div class="nav_btn_holder"><span><?php echo $current_st_index ?></span><button>LOGOUT</button></div>
-            </span>
-            <?php
-                echo "<img src = '../assets/images/students/".$current_image."'/>";
-            ?>
-        </div>
-    </div>
-
     <div class="main_container">
         <form class="form" action="view_selected.php" method="POST">
             <div class="sub_container">
@@ -260,6 +244,6 @@ if(mysqli_num_rows($result) > 0){
     </div>
 
     <!-- JavaScript -->
-    <script src="../assets/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

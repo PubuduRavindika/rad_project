@@ -1,0 +1,214 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.rf-body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://fas.wyb.ac.lk/wp-content/uploads/2020/10/online-programming-course-hero-section-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+}
+
+.rf-container{
+    position: relative;
+    background: white;
+    max-width: 700px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.rf-header{
+    font-size: 35px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.rf-form{
+    margin-top: 30px;
+}
+
+.rf-input-box{
+    width: 100%;
+    margin-top: 20px;
+}
+.rf-input-box input:focus{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.rf-input{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 32px;
+    color: #707070;
+    margin-top: 8px;
+}
+
+.rf-column{
+    display: flex;
+    gap: 15px;
+}
+
+.rf-genderbox{
+    margin-top: 20px;
+}
+
+.rf-genderbox h3{
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 8px; 
+}
+
+.rf-gender-option{
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
+.rf-gender{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    flex-wrap: wrap;
+    
+}
+
+.rf-gender input{
+    cursor: pointer;
+}
+
+.rf-gender label{
+    cursor: pointer;
+}
+
+button{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 18px;
+    height: 55px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 50px;
+}
+
+button:hover{
+    background: #da831a;
+}
+
+.wrapper{
+    position: relative;
+    margin-top: 30px;
+    height: 280px;
+    width: 280px;
+    border: 2px dashed #c2cdda;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    overflow: hidden;
+
+}
+
+.wrapper .image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin: auto;
+    
+}
+
+.upload-img{
+    width: 180px;
+    height: auto;
+}
+
+.wrapper .text{
+    font-size: 20px;
+    font-weight: 400;
+    color: #707070;
+}
+
+.wrapper .cancel-btn{
+    position: absolute;
+    width: 30px;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.wrapper .filename{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    color: white;
+    background-color: #da831a;
+    padding: 8px 0;
+    display: none;
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+}
+
+.custom-btn{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 0.3rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 18px;
+    height: 35px;
+    cursor: pointer;
+    width: 276px;
+    margin-top: 15px;
+}
+
+.custom-btn:hover{
+    background: #da831a;
+}
+
+
+
+
+/* Responsive */
+
+@media (max-width:1200px){
+
+}
+
+@media (max-width:768px){
+    .rf-column{
+        flex-wrap: wrap;
+    }
+}
+

@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-image: url("https://fas.wyb.ac.lk/wp-content/uploads/2020/10/online-programming-course-hero-section-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+}
+
+.container{
+    margin: 0px 300px;
+    padding: opx 30px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 180px;
+}
+
+button{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 22px;
+    height: 65px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover{
+    background: #da831a;
+}
+
+.bt{
+    margin: 0px;
+    margin-top: 30px;
+    padding: 0px;
+    width: 100%;
+    align-items: center;
+
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header h1{
+    font-size: 40px;
+    color: white;
+}
+
+
+.subcontainer{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    margin-top: 0px;
+    padding: 0px;
+    margin-left: -20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.profilepic{
+    width: 100px;
+    height: 100px;
+    background-image: url("https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=");
+    border-radius: 50px;
+    margin: 20px;
+    position: relative;
+    
+}
+
+/* .form{
+    padding: 0px;
+    margin: opx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.details{
+    margin: 0px;
+    padding: 15px 10px;
+}
+
+.details h1{
+    font-size: 18px;
+    color:  white;
+    margin: 10px 4px;
+    font-weight: 700;
+
+}
+
+.logoutbtn{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    border-radius:20px;
+    text-align: center;
+    font-size: 18px;
+    height: 35px;
+    cursor: pointer;
+    width: 150px;
+    padding: 0px;
+}
+
+.logoutbtn:hover{
+    background: #da831a;
+}

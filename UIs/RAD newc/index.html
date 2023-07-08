@@ -1,49 +1,32 @@
-<?php
-
-require "../config/config.php";
-
-if (isset($_SESSION["current_student_id"])) {
-    header("Location:../dashboard/dashboard.php");
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>Login Page</title>
 </head>
-
 <body>
     <div class="container">
         <div class="login-left">
             <div class="login-header">
-                <h1 class="h1-header">Welcome to Students Registration</h1>
-                <p class="p-header">E-Registration System - WUSL</p>
+                <h1 class="h1-header">Welcome to Students Registration - Admin Login</h1>
+                <!-- <h1 class="h1-header">Admin Login</h1> -->
+                <p class="p-header">E-Registration System - wayamba University</p>
             </div>
-            <form class="login-form" action="login_validation.php" method="post">
+            <form class="login-form">
                 <div class="login-form-content">
-                    <?php
-                    if (isset($_GET["result"])) {
-                        echo "<p class = 'error'>* " . $_GET['result'] . "</p>";
-                    }
-                    ?>
                     <div class="form-item">
-                        <label for="index" class="email-label">Enter Index</label>
-                        <input name="index" type="text" id="index" class="email">
+                        <label for="email" class="email-label">Enter Email</label>
+                        <input type="text" id="email" class="email">                        
                     </div>
                     <div class="form-item">
                         <label for="password" class="password-label">Enter Password</label>
-                        <input type="password" id="password" class="password" name="password">
+                        <input type="pssaword" id="password" class="password">                        
                     </div>
                     <div class="form-item">
-                        <!-- <a href="#" class="a-fogetpassword">Forgotten Password?</a> -->
-                        <a href="../admin/index.php" class="a-fogetpassword">Login as Administrator</a>
+                        <a href="#" class="a-fogetpassword">Forgotten Password?</a>
                     </div>
                     <div class="form-item">
                         <div class="checkbox">
@@ -53,18 +36,17 @@ if (isset($_SESSION["current_student_id"])) {
                     </div>
                     <button type="submit">LOG IN</button>
                 </div>
-                <!-- <div class="login-form-footer">
+                <div class="login-form-footer">
                     <a href="#" class="a">
                         <img width="30" src="google.png" alt="">
                         Google Login
                     </a>
-                </div> -->
+                </div>
             </form>
         </div>
         <div class="login-right">
-            <img src="learning.svg" width="80%">
+            <img src="admin.svg" width="80%">
         </div>
     </div>
 </body>
-
 </html>

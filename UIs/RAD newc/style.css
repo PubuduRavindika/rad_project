@@ -1,0 +1,216 @@
+/* 
+primary-color = #EC9022
+secondary-color = #3566D1 
+
+    --orange_1 :#EC9022;
+    --orange_2 :#795e0f;
+
+    --blue_1:#1681F5;
+    --blue_2:#3566D1;
+    --blue_3:#1B5FC1;
+    --blue_4:#0E3C6E;
+
+    --white_1: #FFF;
+*/
+
+*{
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-image: url("https://fas.wyb.ac.lk/wp-content/uploads/2020/10/online-programming-course-hero-section-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 40px;
+}
+.container{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.login-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    background-color: white;
+}
+
+.login-right{
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+}
+
+.login-header{
+    margin-bottom: 50px
+}
+
+.h1-header{
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.p-header{
+    opacity: 0.7;
+}
+
+.login-form{
+    width: 100%;
+}
+
+.login-form-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form-footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 70px;
+}
+
+.a{
+    flex: 6;
+    gap: 15px;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 0.6rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: #3566D1;
+    text-decoration: none;
+}
+
+.a:hover{
+    background-color: #eee;
+}
+
+.email-label{
+    display: inline-block;
+    background-color: white;
+    margin-bottom: 10px;
+    position: absolute;
+    padding: 0 10px;
+    transform: translate(30px, -8px);
+    font-size: 14px;
+}
+
+.password-label{
+    display: inline-block;
+    background-color: white;
+    margin-bottom: 10px;
+    position: absolute;
+    padding: 0 10px;
+    transform: translate(30px, -8px);
+    font-size: 14px;
+}
+
+.email{
+    border: 1px solid black;
+    height: 55px;
+    width: 100%;
+    font-size: 18px;
+    padding: 0 32px;
+    outline: none;
+    border-radius: 100px;
+}
+
+.password{
+    border: 1px solid black;
+    height: 55px;
+    width: 100%;
+    font-size: 18px;
+    padding: 0 32px;
+    outline: none;
+    border-radius: 100px;
+}
+
+.a-fogetpassword{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #3566D1;
+    font-size: 15px;
+
+}
+
+.a-fogetpassword:hover{
+    text-decoration: underline;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.rememberMeCheckbox{
+    width: 20px;
+    height: 20px;
+    accent-color: #EC9022;
+}
+
+button{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 18px;
+    height: 55px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #da831a;
+}
+
+/* Responsive */
+
+@media (max-width:1200px){
+    .login-left{
+        padding: 50px;
+    }
+
+    .login-form{
+        width: 100%;
+    }
+    
+    .login-form-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .login-form-footer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 70px;
+}
+}
+
+@media (max-width:768px){
+    .body{
+        padding: 20px;
+    }
+    .container{
+        grid-template-columns: auto;
+    }
+}

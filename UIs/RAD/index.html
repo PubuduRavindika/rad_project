@@ -1,24 +1,22 @@
 <?php
 
-require "../config/config.php";
+    require "../config/config.php";
 
-if (isset($_SESSION["current_student_id"])) {
-    header("Location:../dashboard/dashboard.php");
-}
+    if(isset($_SESSION["current_student_id"])){
+        header("Location:../dashboard/dashboard.php");
+    }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>Login Page</title>
 </head>
-
 <body>
     <div class="container">
         <div class="login-left">
@@ -29,17 +27,17 @@ if (isset($_SESSION["current_student_id"])) {
             <form class="login-form" action="login_validation.php" method="post">
                 <div class="login-form-content">
                     <?php
-                    if (isset($_GET["result"])) {
-                        echo "<p class = 'error'>* " . $_GET['result'] . "</p>";
-                    }
-                    ?>
+            if(isset($_GET["result"])){
+                echo "<p>".$_GET['result']."</p>";
+            }
+            ?>
                     <div class="form-item">
                         <label for="index" class="email-label">Enter Index</label>
-                        <input name="index" type="text" id="index" class="email">
+                        <input name="index" type="text" id="index" class="email">                        
                     </div>
                     <div class="form-item">
                         <label for="password" class="password-label">Enter Password</label>
-                        <input type="password" id="password" class="password" name="password">
+                        <input type="pssaword" id="password" class="password" name="password">                        
                     </div>
                     <div class="form-item">
                         <!-- <a href="#" class="a-fogetpassword">Forgotten Password?</a> -->
@@ -66,5 +64,4 @@ if (isset($_SESSION["current_student_id"])) {
         </div>
     </div>
 </body>
-
 </html>

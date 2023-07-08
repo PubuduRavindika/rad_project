@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Document</title>
+</head>
+<body class="sr-body">
+    <div class="container">
+        <header class="rf-header">Add New Students</header>
+        <label>Accepted CSV Format</label>
+        <img class="csv-image" src="csv_format.jpg" alt="Accepted CSV format"> 
+        <form class="sr-form">
+            <div class="sr-csv-submit">
+                <label for="file">Select CSV file:</label>
+                <input type="file" name="file" id="file" accept=".csv" required>
+                <!-- <button onclick="defaultbtnactive()" class="custom-btn" id="custom-btn">Choose a file</button> -->
+                <button type = "submit" name = "Import">Submit</button>
+            </div>  
+            
+            <div class="line"></div>
+            
+            <div class="sr-input-box">
+                <label class="sr-lable">Index</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" required>
+            </div>
+
+            <div class="sr-input-box">
+                <label class="sr-lable">Name with Initials</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" required>
+            </div>
+
+            <div class="sr-input-box">
+                <label class="sr-lable">NIC Number</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" required>
+            </div>
+
+            <div class="sr-input-box">
+                <label class="sr-lable">Base Combination</label>
+                <select class="sr-input" name="combination" id = "combination" required>
+                    <option value = "1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                </select>
+            </div>
+
+            <div class="sr-input-box">
+                <label class="sr-lable">Batch ID</label>
+                <input class="sr-input" type="number" placeholder="Enter full name" required>
+            </div>
+
+            <button type = "submit" name = "Import">Submit</button>
+
+        </form>
+
+    </div>
+</body>
+</html>

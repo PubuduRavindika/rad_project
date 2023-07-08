@@ -1,75 +1,3 @@
-:root {
-    --orange_1 :#f7b500;
-    --orange_2 :#795e0f;
-
-    --blue_1:#1681F5;
-    --blue_2:#3566D1;
-    --blue_3:#1B5FC1;
-    --blue_4:#0E3C6E;
-
-    --white_1: #FFF;
-}
-
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
-body {
-    background-image: linear-gradient(to right,var(--orange_2), var(--orange_1));
-    height: 100%;
-}
-
-.login_section {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.login_section .login_box {
-    background-color: var(--white_1);
-    padding: 10px;
-}
-
-.login_section h1{
-    text-transform: uppercase;
-}
-
-.login_section .login_box form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.sub_container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: start;
-}
-
-.sub_holder{
-    border:  2px solid black;
-    width: 27%;
-    min-height: 200px;
-    padding: 10px;
-    margin: 5px;
-}
-
-.selection_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    /* align-items: center; */
-}
-
-/* Nav Bar */
-
 .nav_container {
     display: flex;
     flex-direction: row;
@@ -79,7 +7,6 @@ body {
     background-color: antiquewhite;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: #0E3C6E;
 }
 
 .nav_container .nav_title {
