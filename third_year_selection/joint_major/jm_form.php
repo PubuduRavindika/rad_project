@@ -52,285 +52,393 @@ else{
     echo "Something went wrong";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body onload = "get_credits_total()" onchange = "get_credits_total()">
-    <div>
-        <?php
-            echo "<img src = '../../assets/images/students/".$current_image."'style = 'width:180px'/>";
-            echo "<p>" . $current_st_name. "</p>";
-            echo "<p>" . $current_nic."</p>";
-        ?>
-        <form action="../../logout/logout.php" method="POST">
-            <input type="submit" value="Logout">
-        </form>
+
+<body class="subj-body" onload="get_credits_total()" onchange="get_credits_total()">
+    <div class="nav_container">
+        <div class="nav_title">
+            Student Registration System | WUSL
+        </div>
+        <div class="nav_details">
+            <span>
+                <p>
+                    <?php echo $_SESSION['current_student_name'] ?>
+                </p>
+                <div class="nav_btn_holder">
+                    <span>
+                        <?php echo $_SESSION['current_student_index'] ?>
+                    </span>
+                    <button onclick="location.href='../../logout/logout.php'">LOGOUT</button>
+                </div>
+            </span>
+            <?php
+            echo "<img src = '../../assets/images/students/" . $_SESSION['current_image'] . "'>";
+            ?>
+        </div>
     </div>
-    <!-- Semester 1 -->
-    <!-- Semester 1 -->
-    <!-- Semester 1 -->
-    <h3>Semester 1</h3>
-    <!-- Semester 1 Compulsory Modules -->
-    <!-- Semester 1 Compulsory Modules -->
-    <h4>Compulsory Subjects</h4>
-    <table>
-        <tr>
-            <th>Module Name</th>
-            <th>Credits</th>
-            <th>Select</th>
-        </tr>
-        <?php
-        // 
-        // Semester 1 Compulsory Modules Major 1
-        // 
-        $compulsory_credits_count_semseter_1 = 0;
-        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_1_query)){
-            while($major_1_compulsory_modules = mysqli_fetch_assoc($q_return)){
-                if($major_1_compulsory_modules['module_semester'] == 1){
-                    $compulsory_credits_count_semseter_1 += $major_1_compulsory_modules['module_credits'];
-                    echo "
-                    <tr>
-                        <td>".$major_1_compulsory_modules['module_name']."</td>
-                        <td name = 'sem_1_comp_credits'>".$major_1_compulsory_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" checked disabled></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        // 
-        // Semester 1 Compulsory Modules Major 2
-        // 
-        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_2_query)){
-            while($major_2_compulsory_modules = mysqli_fetch_assoc($q_return)){
-                if($major_2_compulsory_modules['module_semester'] == 1){
-                    $compulsory_credits_count_semseter_1 += $major_2_compulsory_modules['module_credits'];
-                    echo "
-                    <tr>
-                        <td>".$major_2_compulsory_modules['module_name']."</td>
-                        <td name = 'sem_1_comp_credits'>".$major_2_compulsory_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" checked disabled></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        ?>
-    <tr>
-        <td>Total Credits of Compulory: </td>
-        <td></td>
-        <!-- Count from database table -->
-        <!-- <td>
-            <?php //echo $compulsory_credits_count_semseter_1?>
-        </td> -->
-        <td><span id = "compulsory_credits_count_semseter_1"></span></td>
-    </tr>
-    </table>
-    <!-- Semester 1 subsidairy Modules -->
-    <!-- Semester 1 subsidairy Modules -->
-    <!-- Semester 1 subsidairy Modules -->
-    <h4>subsidairy Subjects</h4>
-    <table>
-        <tr>
-            <th>Module Name</th>
-            <th>Credits</th>
-            <th>Select</th>
-        </tr>
-    <?php
-        // 
-        // Semester 1 subsidairy Modules Major 1
-        // 
-        $sem_1_subs_count = 0;
-        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_1_query)){
-            while($major_1_subsidairy_modules = mysqli_fetch_assoc($q_return)){
-                if($major_1_subsidairy_modules['module_semester'] == 1){
-                    $sem_1_subs_count++;
-                    echo "
-                    <tr>
-                        <td>".$major_1_subsidairy_modules['module_name']."</td>
-                        <td name = \"sem_1_subs_credits\" id = \"sem_1_subs_credits_".$sem_1_subs_count."\">".$major_1_subsidairy_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" id = \"sem_1_subs_input_".$sem_1_subs_count."\"></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        // 
-        // Semester 1 subsidairy Modules Major 2
-        // 
 
-        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_2_query)){
-            while($major_2_subsidairy_modules = mysqli_fetch_assoc($q_return)){
-                if($major_2_subsidairy_modules['module_semester'] == 1){
-                    $sem_1_subs_count++;
-                    echo "
-                    <tr>
-                        <td>".$major_2_subsidairy_modules['module_name']."</td>
-                        <td name = \"sem_1_subs_credits\" id = \"sem_1_subs_credits_".$sem_1_subs_count."\">".$major_2_subsidairy_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" id = \"sem_1_subs_input_".$sem_1_subs_count."\"></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        ?>
-        <tr>
-            <td>Total Credits of Optional: </td>
-            <td></td>
-            <td><span id = "semester_1_total_optional_count"></span></td>
-        </tr>
+    <div class="subj-container">
+        <div class="sem">
+            <div class="header">Semester 1</div>
+            <div class="main-div">
+                <div class="subjects">
+                    <div class="sub-header">Compulsory Subjects</div>
+                    <div class="sub-row">
+                        <div class="sub-colmn">Module Name</div>
+                        <div class="sub-colmn">Credits</div>
+                        <div class="sub-colmn">Select</div>
+                    </div>
 
-        <tr>
-            <td><strong>Total Credits of Semester: </strong></td>
-            <td></td>
-            <td><span id = "semester_1_total_credits_count"></span></td>
-        </tr>
-    </table>
+                    <?php
+                        // 
+                        // Semester 1 Compulsory Modules Major 1
+                        // 
+                        $compulsory_credits_count_semseter_1 = 0;
+                        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_1_query)){
+                            while($major_1_compulsory_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_1_compulsory_modules['module_semester'] == 1){
+                                    $compulsory_credits_count_semseter_1 += $major_1_compulsory_modules['module_credits'];
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_1_compulsory_modules['module_name'].'</div>
 
-    <!-- Semester 2 -->
-    <!-- Semester 2 -->
-    <!-- Semester 2 -->
-    <h3>Semester 2</h3>
-    <!-- Semester 2 Compulsory Modules -->
-    <!-- Semester 2 Compulsory Modules -->
-    <!-- Semester 2 Compulsory Modules -->
-    <h4>Compulsory Subjects</h4>
-    <table>
-        <tr>
-            <th>Module Name</th>
-            <th>Credits</th>
-            <th>Select</th>
-        </tr>
-        <?php
-        $compulsory_credits_count_semseter_2 = 0;
-        // 
-        // Semester 2 Compulsory Modules Major 1
-        //
-        
-        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_1_query)){
-            while($major_1_compulsory_modules = mysqli_fetch_assoc($q_return)){
-                if($major_1_compulsory_modules['module_semester'] == 2){
-                    $compulsory_credits_count_semseter_2 += $major_1_compulsory_modules['module_credits'];
-                    echo "
-                    <tr>
-                        <td>".$major_1_compulsory_modules['module_name']."</td>
-                        <td name = 'sem_2_comp_credits'>".$major_1_compulsory_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" checked disabled></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        // 
-        // Semester 2 Compulsory Modules Major 2
-        // 
-        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_2_query)){
-            while($major_2_compulsory_modules = mysqli_fetch_assoc($q_return)){
-                if($major_2_compulsory_modules['module_semester'] == 2){
-                    $compulsory_credits_count_semseter_2 += $major_2_compulsory_modules['module_credits'];
-                    echo "
-                    <tr>
-                        <td>".$major_2_compulsory_modules['module_name']."</td>
-                        <td name = 'sem_2_comp_credits'>".$major_2_compulsory_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" checked disabled></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
-        ?>
-        <tr>
-            <td>Total Credits of Compulsory: </td>
-            <td></td>
-            <!-- Count from database table -->
-            <!-- <td>
-                <?php //echo $compulsory_credits_count_semseter_2?>
-            </td> -->
-            <td><span id = "compulsory_credits_count_semseter_2">0</span></td>
-        </tr>
-        
-    </table>
-    <!-- Semester 2 subsidairy Modules -->
-    <!-- Semester 2 subsidairy Modules -->
-    <!-- Semester 2 subsidairy Modules -->
-    <h4>subsidairy Subjects</h4>
-    <table>
-        <tr>
-            <th>Module Name</th>
-            <th>Credits</th>
-            <th>Select</th>
-        </tr>
-    <?php
-    // 
-    // Semester 2 subsidairy Modules Major 1
-    // 
-        $sem_2_subs_count = 0;
-        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_1_query)){
-            while($major_1_subsidairy_modules = mysqli_fetch_assoc($q_return)){
-                if($major_1_subsidairy_modules['module_semester'] == 2){
-                    $sem_2_subs_count++;
-                    echo "
-                    <tr>
-                        <td>".$major_1_subsidairy_modules['module_name']."</td>
-                        <td name = \"sem_2_subs_credits\" id = \"sem_2_subs_credits_".$sem_2_subs_count."\">".$major_1_subsidairy_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" id = \"sem_2_subs_input_".$sem_2_subs_count."\"></td>
-                    </tr>
-                    
-                    ";
-                }
-            }
-        }
+                                        <div class="sub-cell" name = "sem_1_comp_credits">'.$major_1_compulsory_modules['module_credits'].'</div>
 
-        // 
-        // Semester 2 subsidairy Modules Major 2
-        // 
+                                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked disabled></div>
+                                    </div>
+                                    ';
+                                }
+                            }
+                        }
+                        // 
+                        // Semester 1 Compulsory Modules Major 2
+                        // 
+                        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_2_query)){
+                            while($major_2_compulsory_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_2_compulsory_modules['module_semester'] == 1){
+                                    $compulsory_credits_count_semseter_1 += $major_2_compulsory_modules['module_credits'];
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_2_compulsory_modules['module_name'].'</div>
 
-        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_2_query)){
-            while($major_2_subsidairy_modules = mysqli_fetch_assoc($q_return)){
-                if($major_2_subsidairy_modules['module_semester'] == 2){
-                    $sem_2_subs_count++;
-                    echo "
-                    <tr>
-                        <td>".$major_2_subsidairy_modules['module_name']."</td>
-                        <td name = \"sem_2_subs_credits\" id = \"sem_2_subs_credits_".$sem_2_subs_count."\">".$major_2_subsidairy_modules['module_credits']."</td>
-                        <td><input type=\"checkbox\" id = \"sem_2_subs_input_".$sem_2_subs_count."\"></td>
-                    </tr>
+                                        <div class="sub-cell" name = "sem_1_comp_credits">'.$major_2_compulsory_modules['module_credits'].'</div>
+
+                                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked disabled></div>
+                                    </div>
+                                    ';
+                                }
+                            }
+                        }
+                    ?>
+
+                    <div class="total-row">
+                        <div class="sub-colmn">Total Credits of Compulory</div>
+                        <div class="sub-colmn"><span id = "compulsory_credits_count_semseter_1"></span></div>
+                    </div>
+                </div>
+                <div class="subjects">
+                    <div class="sub-header">Subsidairy Subjects</div>
+
+                    <div class="sub-row">
+                        <div class="sub-colmn">Module Name</div>
+                        <div class="sub-colmn">Credits</div>
+                        <div class="sub-colmn">Select</div>
+                    </div>
+
+
+                    <form id = "form1" action="subs_modules.php?comb=<?php echo $jmajor_comb?>&choice=<?php echo $comb_choice?>" method="POST">
                     
-                    ";
-                }
-            }
-        }
-        ?>
-        <tr>
-            <td>Total Credits of Optional: </td>
-            <td></td>
-            <td><span id = "semester_2_total_optional_count"></td>
-        </tr>
-        <tr>
-            <td><strong>Total Credits of Semester: </strong></td>
-            <td></td>
-            <td><span id = "semester_2_total_credits_count"></span></td>
-        </tr>
-        <tr>
-            <td><strong>Total Credits of Year: </strong></td>
-            <td></td>
-            <td><span id = "year_total_credits_count"></span></td>
-        </tr>
-    </table>
-    <form action="jm_form_adder.php">
-        <input type="submit" value = "Submit" id = "btn_submit" disabled>
-    </form>
-    <script src = "../../assets/script.js"></script>
+                    
+                    <?php
+                        // 
+                        // Semester 1 subsidairy Modules Major 1
+                        // 
+                        $sem_1_subs_count = 0;
+                        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_1_query)){
+                            while($major_1_subsidairy_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_1_subsidairy_modules['module_semester'] == 1){
+                                    $sem_1_subs_count++;
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_1_subsidairy_modules['module_name']."</td>
+                                    //     <td name = \"sem_1_subs_credits\" id = \"sem_1_subs_credits_".$sem_1_subs_count."\">".$major_1_subsidairy_modules['module_credits']."</td>
+                                    //     <td><input type=\"checkbox\" id = \"sem_1_subs_input_".$sem_1_subs_count."\"></td>
+                                    // </tr>
+                                    
+                                    // ";
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_1_subsidairy_modules['module_name'].'</div>
+
+                                        <div class="sub-cell" name = "sem_1_subs_credits" id = "sem_1_subs_credits_'.$sem_1_subs_count.'">'.$major_1_subsidairy_modules['module_credits'].'</div>
+                                        
+                                        <div class="sub-cell">
+                                        <input name = "subs_modules[]" value = "'.$major_1_subsidairy_modules['module_id'].'" type="checkbox" class="rememberMeCheckbox" id = "sem_1_subs_input_'.$sem_1_subs_count.'">
+                                        </div>
+                                    </div>
+                                    
+                                    ';
+                                }
+                            }
+                        }
+                        // 
+                        // Semester 1 subsidairy Modules Major 2
+                        // 
+
+                        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_2_query)){
+                            while($major_2_subsidairy_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_2_subsidairy_modules['module_semester'] == 1){
+                                    $sem_1_subs_count++;
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_2_subsidairy_modules['module_name']."</td>
+
+                                    //     <td name = \"sem_1_subs_credits\" id = \"sem_1_subs_credits_".$sem_1_subs_count."\">".$major_2_subsidairy_modules['module_credits']."</td>
+
+                                    //     <td><input type=\"checkbox\" id = \"sem_1_subs_input_".$sem_1_subs_count."\"></td>
+                                    // </tr>
+                                    
+                                    // ";
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_2_subsidairy_modules['module_name'].'</div>
+
+                                        <div class="sub-cell" name = "sem_1_subs_credits" id = "sem_1_subs_credits_'.$sem_1_subs_count.'">'.$major_2_subsidairy_modules['module_credits'].'</div>
+                                        
+                                        <div class="sub-cell"><input name = "subs_modules[]" type="checkbox" class="rememberMeCheckbox" id = "sem_1_subs_input_'.$sem_1_subs_count.'" value = "'.$major_2_subsidairy_modules['module_id'].'"></div>
+                                    </div>
+                                    
+                                    ';
+                                }
+                            }
+                        }
+                    ?>
+                    <!-- </form> -->
+
+                    <!-- <div class="sub-row">
+                        <div class="cell">CMIS 3134 - Computer Architecture & Compiler Design</div>
+                        <div class="sub-cell">4</div>
+                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked></div>
+                    </div> -->
+
+                    <div class="total-row">
+                        <div class="sub-colmn">Total Credits of Subsidiary</div>
+                        <div class="sub-colmn"><span id = "semester_1_total_optional_count"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total-credits">
+            <div class="sub-colmn">Total Credits of Semester 1</div>
+            <div class="sub-colmn"><span id = "semester_1_total_credits_count"></span></div>
+        </div>
+
+        <div class="sem">
+            <div class="header">Semester 2</div>
+            <div class="main-div">
+                <div class="subjects">
+                    <div class="sub-header">Compulsory Subjects</div>
+                    <div class="sub-row">
+                        <div class="sub-colmn">Module Name</div>
+                        <div class="sub-colmn">Credits</div>
+                        <div class="sub-colmn">Select</div>
+                    </div>
+                    
+                    <?php
+                        $compulsory_credits_count_semseter_2 = 0;
+                        // 
+                        // Semester 2 Compulsory Modules Major 1
+                        //
+                        
+                        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_1_query)){
+                            while($major_1_compulsory_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_1_compulsory_modules['module_semester'] == 2){
+                                    $compulsory_credits_count_semseter_2 += $major_1_compulsory_modules['module_credits'];
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_1_compulsory_modules['module_name']."</td>
+                                    //     <td name = 'sem_2_comp_credits'>".$major_1_compulsory_modules['module_credits']."</td>
+
+                                    //     <td><input type=\"checkbox\" checked disabled></td>
+                                    // </tr>
+                                    
+                                    // ";
+                                    echo '
+                                    
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_1_compulsory_modules['module_name'].'</div>
+
+                                        <div class="sub-cell" name = "sem_2_comp_credits">'.$major_1_compulsory_modules['module_credits'].'</div>
+
+                                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked disabled></div>
+                                    </div>
+
+                                    ';
+                                }
+                            }
+                        }
+                        // 
+                        // Semester 2 Compulsory Modules Major 2
+                        // 
+                        if($q_return = mysqli_query($conn, $get_compulsory_modules_major_2_query)){
+                            while($major_2_compulsory_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_2_compulsory_modules['module_semester'] == 2){
+                                    $compulsory_credits_count_semseter_2 += $major_2_compulsory_modules['module_credits'];
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_2_compulsory_modules['module_name']."</td>
+                                    //     <td name = 'sem_2_comp_credits'>".$major_2_compulsory_modules['module_credits']."</td>
+                                    //     <td><input type=\"checkbox\" checked disabled></td>
+                                    // </tr>
+                                    
+                                    // ";
+                                    echo '
+                                    
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_2_compulsory_modules['module_name'].'</div>
+
+                                        <div class="sub-cell" name = "sem_2_comp_credits" id = "sem_2_comp_credits">'.$major_2_compulsory_modules['module_credits'].'</div>
+
+                                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked disabled></div>
+                                    </div>
+
+                                    ';
+                                }
+                            }
+                        }
+                        ?>
+
+                    <!-- <div class="sub-row">
+                        <div class="cell">CMIS 3114 - Data Communication & Comp. Networks</div>
+                        <div class="sub-cell">4</div>
+                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked></div>
+                    </div>
+
+                    <div class="sub-row">
+                        <div class="cell">ELTN 3113 - Digital Electronics</div>
+                        <div class="sub-cell">3</div>
+                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked></div>
+                    </div>
+
+                    <div class="sub-row">
+                        <div class="cell">ELTN 3121 - Digital Electronics - Lab</div>
+                        <div class="sub-cell">1</div>
+                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked></div>
+                    </div> -->
+
+                    <div class="total-row">
+                        <div class="sub-colmn">Total Credits of Compulory</div>
+                        <div class="sub-colmn"><span id = "compulsory_credits_count_semseter_2"></div>
+                    </div>
+                </div>
+                <div class="subjects">
+                    <div class="sub-header">Subsidairy Subjects</div>
+
+                    <div class="sub-row">
+                        <div class="sub-colmn">Module Name</div>
+                        <div class="sub-colmn">Credits</div>
+                        <div class="sub-colmn">Select</div>
+                    </div>
+
+                    <!-- <form id = "form2" action="sem_2_subs.php" method="POST"> -->
+                    <?php
+                    // 
+                    // Semester 2 subsidairy Modules Major 1
+                    // 
+                        $sem_2_subs_count = 0;
+                        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_1_query)){
+                            while($major_1_subsidairy_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_1_subsidairy_modules['module_semester'] == 2){
+                                    $sem_2_subs_count++;
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_1_subsidairy_modules['module_name']."</td>
+
+                                    //     <td name = \"sem_2_subs_credits\" id = \"sem_2_subs_credits_".$sem_2_subs_count."\">".$major_1_subsidairy_modules['module_credits']."</td>
+
+                                    //     <td><input type=\"checkbox\" id = \"sem_2_subs_input_".$sem_2_subs_count."\"></td>
+                                    // </tr>
+                                    
+                                    // ";
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_1_subsidairy_modules['module_name'].'</div>
+
+                                        <div class="sub-cell" name = "sem_2_subs_credits" id = "sem_2_subs_credits_'.$sem_2_subs_count.'">'.$major_1_subsidairy_modules['module_credits'].'</div>
+
+                                        <div class="sub-cell"><input value = "'.$major_1_subsidairy_modules['module_id'].'" type="checkbox" class="rememberMeCheckbox" id = "sem_2_subs_input_'.$sem_2_subs_count.'" name = "subs_modules[]"></div>
+                                    </div>
+                                    
+                                    ';
+                                }
+                            }
+                        }
+
+                        // 
+                        // Semester 2 subsidairy Modules Major 2
+                        // 
+
+                        if($q_return = mysqli_query($conn, $get_subsidairy_modules_major_2_query)){
+                            while($major_2_subsidairy_modules = mysqli_fetch_assoc($q_return)){
+                                if($major_2_subsidairy_modules['module_semester'] == 2){
+                                    $sem_2_subs_count++;
+                                    // echo "
+                                    // <tr>
+                                    //     <td>".$major_2_subsidairy_modules['module_name']."</td>
+                                    //     <td name = \"sem_2_subs_credits\" id = \"sem_2_subs_credits_".$sem_2_subs_count."\">".$major_2_subsidairy_modules['module_credits']."</td>
+                                    //     <td><input type=\"checkbox\" id = \"sem_2_subs_input_".$sem_2_subs_count."\"></td>
+                                    // </tr>
+                                    
+                                    // ";
+
+                                    echo '
+                                    <div class="sub-row">
+                                        <div class="cell">'.$major_2_subsidairy_modules['module_name'].'</div>
+                                        <div class="sub-cell" name = "sem_2_subs_credits" id = "sem_2_subs_credits_'.$sem_2_subs_count.'">'.$major_2_subsidairy_modules['module_credits'].'</div>
+                                        <div class="sub-cell"><input value = "'.$major_2_subsidairy_modules['module_id'].'" type="checkbox" class="rememberMeCheckbox" id = "sem_2_subs_input_'.$sem_2_subs_count.'" name = "subs_modules[]"></div>
+                                    </div>
+                                    ';
+                                }
+                            }
+                        }
+                        ?>
+                    </form>
+<!-- 
+                    <div class="sub-row">
+                        <div class="cell">CMIS 3134 - Computer Architecture & Compiler Design</div>
+                        <div class="sub-cell">4</div>
+                        <div class="sub-cell"><input type="checkbox" class="rememberMeCheckbox" checked></div>
+                    </div> -->
+
+                    <div class="total-row">
+                        <div class="sub-colmn">Total Credits of Subsidiary</div>
+                        <div class="sub-colmn"><span id = "semester_2_total_optional_count"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total-credits">
+            <div class="sub-colmn">Total Credits of Semester 2</div>
+            <div class="sub-colmn"><span id = "semester_2_total_credits_count"></span></div>
+        </div>
+
+        <div class="total-credits-final">
+            <div class="sub-colmn-total">Total Credits of Year</div>
+            <div class="sub-colmn-total"><span id = "year_total_credits_count"></span></div>
+        </div>
+
+        <button class="sub-btn" disabled id = "btn_submit" onclick="submitTwo()">Submit</button>
+    </div>
+    <script src = "../../assets/script.js"></script>                    
 </body>
+
 </html>

@@ -244,6 +244,7 @@ function general_selection_enabler() {
  */
 
 function get_credits_total(){
+    // alert("Hi");
     // Semester 1 Compulsory
     var sem_1_comp_credits_total = 0;
     const credit_elements_1 = document.getElementsByName('sem_1_comp_credits');
@@ -335,4 +336,9 @@ function get_credits_total(){
     else{
         document.getElementById('btn_submit').disabled = true;
     }
+}
+
+function submitTwo(){
+    document.getElementById("form1").submit();
+    document.getElementById("form2").submit();
 }

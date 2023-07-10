@@ -93,13 +93,13 @@ if (mysqli_num_rows($result) == 0) {
                             if (mysqli_num_rows($jm_application_result) > 0) {
                                 // while($app_row = mysqli_fetch_assoc($jm_application_result)){
                                 if (!empty($app_row['jm_choice_1'])) {
-                                    $status = "Filled";
+                                    $status = '<div class="status-filled">Filled</div>';
                                 } else {
-                                    $status = "Not Filled";
+                                    $status = '<div class="status-notfilled">Not Filled</div>';
                                 }
                                 // }
                             } else {
-                                $status = "Not Filled";
+                                $status = '<div class="status-notfilled">Not Filled</div>';
                             }
 
                             $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
@@ -110,7 +110,7 @@ if (mysqli_num_rows($result) == 0) {
                                 echo '
                                 <div class="select-com">
                                     <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">1. ' . $comb_name['jm_comb_name'] . '</button>
-                                    <div class="status-notfilled">' . $status . '</div>
+                                    '.$status.'
                                 </div>
                                 ';
                             }
@@ -127,13 +127,13 @@ if (mysqli_num_rows($result) == 0) {
                             if (mysqli_num_rows($jm_application_result) > 0) {
                                 // while($app_row = mysqli_fetch_assoc($jm_application_result)){
                                 if (!empty($app_row['jm_choice_2'])) {
-                                    $status = "Filled";
+                                    $status = '<div class="status-filled">Filled</div>';
                                 } else {
-                                    $status = "Not Filled";
+                                    $status = '<div class="status-notfilled">Not Filled</div>';
                                 }
                                 // }
                             } else {
-                                $status = "Not Filled";
+                                $status = '<div class="status-notfilled">Not Filled</div>';
                             }
 
                             $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
@@ -143,7 +143,7 @@ if (mysqli_num_rows($result) == 0) {
                                 echo '
                                 <div class="select-com">
                                     <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">2. ' . $comb_name['jm_comb_name'] . '</button>
-                                    <div class="status-notfilled">' . $status . '</div>
+                                    '.$status.'
                                 </div>
                                 ';
                             }
@@ -156,13 +156,13 @@ if (mysqli_num_rows($result) == 0) {
                             $status = "";
                             if (mysqli_num_rows($jm_application_result) > 0) {
                                 if (!empty($app_row['jm_choice_3'])) {
-                                    $status = "Filled";
+                                    $status = '<div class="status-filled">Filled</div>';
                                 } else {
-                                    $status = "Not Filled";
+                                    $status = '<div class="status-notfilled">Not Filled</div>';
                                 }
                                 // }
                             } else {
-                                $status = "Not Filled";
+                                $status = '<div class="status-notfilled">Not Filled</div>';
                             }
 
                             $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
@@ -173,7 +173,7 @@ if (mysqli_num_rows($result) == 0) {
                                 echo '
                             <div class="select-com">
                                 <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">3. ' . $comb_name['jm_comb_name'] . '</button>
-                                <div class="status-notfilled">' . $status . '</div>
+                                '.$status.'
                             </div>
                             ';
                             }
