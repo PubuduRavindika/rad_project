@@ -1,0 +1,60 @@
+<?php
+
+    require "../config/config.php";
+
+    if(!isset($_SESSION["current_student_id"])){
+        header("Location:../login/login.php?result=Please Login First");
+    }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body class="dash-body">
+    <div class="nav_container">
+        <div class="nav_title">
+            Student Registration System | WUSL
+        </div>
+        <div class="nav_details">
+            <span>
+                <p><?php echo $_SEESION['current_student_name'] ?></p>
+                <div class="nav_btn_holder"><span><?php echo $_SEESION['current_index_number'] ?></span><button><a href="../logout/logout.php">LOGOUT</button></div>
+            </span>
+            <?php
+            echo "<img src = '../assets/images/students/".$st_details['student_image']."'>";
+            ?>
+        </div>
+    </div>
+
+    <div class="dash-container">
+        <div class="left-div">
+            <button class="dash-button" disabled>1st Year Registration</button>
+            <button class="dash-button" disabled>2nd Year Registration</button>
+            <button class="dash-button" onclick="location.href='../third_year_selection/third_year_selection.php'">3rd Year Selection Forms</button>
+            <button class="dash-button" disabled>3rd Year Registration</button>
+            <button class="dash-button" disabled>4th Year Registration</button>
+        </div>
+        <div class="right-div">
+            <div class="right-header">
+                LOGING AS: <?php echo $_SEESION['current_index_number'] ?>
+            </div>
+            <?php
+            echo "<img src = '../assets/images/students/".$st_details['student_image']."'>";
+            ?>
+            
+            <div class="name">
+                <?php echo $_SEESION['current_student_name'] ?>
+            </div>
+            <div class="id">
+                <?php echo $_SEESION['current_nic_number'] ?>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -19,7 +19,7 @@ if(isset($_POST['index']) && isset($_POST['password'])){
         header("Location:login.php?result=Invalid username or password.");
     }
     else {
-        $login_query = "SELECT student_index_number, student_initials_name ,student_id,student_password,student_first_time_login FROM student_table WHERE student_index_number = '$index'";
+        $login_query = "SELECT student_index_number, student_initials_name ,student_id,student_password,student_first_time_login, student_nic_number FROM student_table WHERE student_index_number = '$index'";
 
         if($q_return = mysqli_query($conn,$login_query)){
             $login_result = mysqli_fetch_assoc($q_return);
@@ -30,6 +30,7 @@ if(isset($_POST['index']) && isset($_POST['password'])){
                 $_SESSION["current_student_id"] = $login_result['student_id'];
                 $_SESSION["current_student_index"] = $login_result['student_index_number'];
                 $_SESSION["current_student_name"] = $login_result['student_initials_name'];
+                $_SESSION["current_student_nic"] = $login_result['student_nic_number'];
 
                 if($login_result['student_first_time_login']){
                     header("Location:../add_details/add_students_details.php");

@@ -1,0 +1,185 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.dash-body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("https://fas.wyb.ac.lk/wp-content/uploads/2020/10/online-programming-course-hero-section-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0px 40px;
+}
+.nav_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 100px;
+    background-color: rgba(10, 10, 10, 0.31);
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 50px;
+}
+
+.nav_container .nav_title {
+    text-transform: capitalize;
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+}
+
+img {
+    width: 50px;
+    height: auto;
+}
+
+.nav_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform:capitalize;
+    color: white;
+    
+}
+
+.nav_details img {
+    margin-left: 10px;
+    width: 70px;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid #EC9022;
+}
+
+.nav_details .nav_btn_holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_details .nav_btn_holder button {
+    /* margin-right: 20px; */
+        border: none;
+        background: linear-gradient(45deg, #EC9022, #EC9022);
+        color: white;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 8px 13px;
+}
+
+.nav_details .nav_btn_holder button:hover{
+    background: #da831a;
+}
+
+.dash-container{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    border-radius: 10px;
+    overflow: hidden;
+    height: auto;
+    margin: auto;
+}
+
+.left-div{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 70px;
+    background-color: white;
+}
+
+.right-div{
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-header{
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #6d6c6c;
+}
+
+.profile-img{
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid #EC9022;
+}
+
+.name{
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-weight: 600;
+    color: #6d6c6c;
+}
+.id{
+    font-size: 20px;
+    font-weight: 600;
+    color: #6d6c6c;
+}
+
+.dash-button{
+    border: none;
+    background: linear-gradient(45deg, #EC9022, #EC9022);
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    font-size: 18px;
+    height: 55px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.dash-button:hover{
+    background: #da831a;
+}
+
+@media screen and (max-width:820px){
+    .nav_container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:900px){
+    .profile-img{
+        width: 200px;
+    }
+}
+
+@media (max-width:768px){
+    .dash-container{
+        grid-template-columns: auto;
+    }
+
+    .right-header{
+        margin-top: 30px;
+    }
+
+    .left-div{
+        padding: 15px 10px;
+    }
+    .id{
+        margin-bottom: 30px;
+    }
+
+    .nav_container {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

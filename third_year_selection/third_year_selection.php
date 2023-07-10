@@ -60,11 +60,14 @@ if(mysqli_num_rows($result) > 0){
         </div>
         <div class="nav_details">
             <span>
-                <p><?php echo $current_st_name?></p>
-                <div class="nav_btn_holder"><span><?php echo $current_st_index ?></span><button>LOGOUT</button></div>
+                <p><?php echo $_SESSION['current_student_name'] ?></p>
+                <div class="nav_btn_holder">
+                    <span><?php echo $_SESSION['current_student_index'] ?></span>
+                    <button onclick="location.href='../logout/logout.php'">LOGOUT</button>
+                </div>
             </span>
             <?php
-                echo "<img src = '../assets/images/students/".$current_image."'/>";
+            echo "<img src = '../assets/images/students/" . $_SESSION['current_image']. "'>";
             ?>
         </div>
     </div>

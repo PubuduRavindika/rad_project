@@ -10,284 +10,207 @@ $current_index = $_SESSION['current_student_index'];
 $sql = "SELECT * FROM selection_form_table WHERE student_index_number = $current_index";
 $result = mysqli_query($conn, $sql);
 
-if(mysqli_num_rows($result) == 0){
+if (mysqli_num_rows($result) == 0) {
     header("Location:third_year_selection.php");
 }
-
-
-
-// $special_subjects = array();
-
-// if(isset($_POST["special_option_1"])){
-//     array_push($special_subjects, $_POST["special_option_1"]);
-//     if(isset($_POST["special_option_2"])){
-//         array_push($special_subjects, $_POST["special_option_2"]);
-//         if(isset($_POST["special_option_3"])){
-//             array_push($special_subjects, $_POST["special_option_3"]);
-//         }
-//     }
-// }
-
-
-// if(!($special_subjects == array_unique($special_subjects))){
-//     echo "Invalid Choice, in Special Subjects";
-//     header("Location:third_year_selection.php");
-// }
-
-// // 
-// // Adding Special subjects to the session array
-// // 
-// if(empty($_SESSION['special_subjects']) || !isset($_SESSION['special_subjects'])){
-//     $_SESSION['special_subjects'] = $special_subjects;
-// }
-
-
-// $jmajor_subjects = array();
-
-// if(isset($_POST["jmajor_option_1"])){
-//     array_push($jmajor_subjects, $_POST["jmajor_option_1"]);
-//     if(isset($_POST["jmajor_option_2"])){
-//         array_push($jmajor_subjects, $_POST["jmajor_option_2"]);
-//         if(isset($_POST["jmajor_option_3"])){
-//             array_push($jmajor_subjects, $_POST["jmajor_option_3"]);
-//         }
-//     }
-// }
-// // 
-// // Adding Joint Major subjects to the session array
-// // 
-// if(empty($_SESSION['jmajor_subjects']) || !isset($_SESSION['jmajor_subjects'])){
-//     $_SESSION['jmajor_subjects'] = $jmajor_subjects;
-// }
-
-// if(!($jmajor_subjects == array_unique($jmajor_subjects))){
-//     echo "Invalid Choice, in Joint Major Subjects";
-//     header("Location:third_year_selection.php");
-// }
-
-
-// $general_subjects = array();
-
-
-// if(isset($_POST["general_option_1"])){
-//     array_push($general_subjects, $_POST["general_option_1"]);
-//     if(isset($_POST["general_option_2"])){
-//         array_push($general_subjects, $_POST["general_option_2"]);
-//         if(isset($_POST["general_option_3"])){
-//             array_push($general_subjects, $_POST["general_option_3"]);
-//         }
-//     }
-// }
-
-// // 
-// // Adding Special subjects to the session array
-// // 
-// if(empty($_SESSION['general_subjects']) || !isset($_SESSION['general_subjects'])){
-//     $_SESSION['general_subjects'] = $general_subjects;
-// }
-
-
-// if(!($general_subjects == array_unique($general_subjects))){
-//     echo "Invalid Choice, in General Subjects";
-//     header("Location:third_year_selection.php");
-// }
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_subview.css">
+    <title>Document</title>
+</head>
+
+<body class="select-body">
+    <div class="nav_container">
+        <div class="nav_title">
+            Student Registration System | WUSL
+        </div>
+        <div class="nav_details">
+            <span>
+                <p><?php echo $_SESSION['current_student_name'] ?></p>
+                <div class="nav_btn_holder">
+                    <span><?php echo $_SESSION['current_student_index'] ?></span>
+                    <button onclick="location.href='../logout/logout.php'">LOGOUT</button>
+                </div>
+            </span>
             <?php
-            echo "<img src = '../assets/images/students/".$current_image."'style = 'width:180px'/>";
-            echo "<p>" . $current_st_name. "</p>";
-            echo "<p>" . $current_nic."</p>";
+            echo "<img src = '../assets/images/students/" . $_SESSION['current_image'] . "'>";
             ?>
-        <form action="../logout/logout.php" method="POST">
-            <input type="submit" value="Logout">
-        </form>
-        <?php
-        // 
-        // Printing Special subjects
-        // 
-        echo "<h4>Special Subjects</h4>";
+        </div>
+    </div>
 
-        
-        $get_sp_choices = "SELECT sp_choice_1, sp_choice_2, sp_choice_3 FROM selection_form_table WHERE student_index_number = $current_index";
-        $sp_result = mysqli_query($conn,$get_sp_choices);
+    <div class="select-container">
+        <div class="header-row">
+            <div class="div-colomn">
+                <div class="header">Special Subjects</div>
+                <div class="select-com">
+                    <button class="select-button">1.COMB: 1A</button>
+                    <div class="status-notfilled">Not Filled</div>
+                </div>
 
-        // Application Data
-        $get_sp_app = "SELECT sp_choice_1, sp_choice_2, sp_choice_3 FROM selection_application_table WHERE student_index_number = $current_index";
-        $sp_application_result = mysqli_query($conn,$get_sp_app);
+                <div class="select-com">
+                    <button class="select-button">2.COMB: 1A</button>
+                    <div class="status-filled">Filled</div>
+                </div>
 
-        if(mysqli_num_rows($sp_result) > 0){
-            echo "<ol>";
-            while($row = mysqli_fetch_assoc($sp_result)){
-                if(!empty($row['sp_choice_1'])){
-                    $sub_com = $row["sp_choice_1"];
-                    $choice = 1;
-                    $special_query = "SELECT sp_comb_id, sp_comb_name FROM sp_combinations_table WHERE sp_comb_id = '$sub_com'";
-                    $name_results = mysqli_query($conn, $special_query);
-                    if(mysqli_num_rows($name_results) > 0){
-                        $comb_name = mysqli_fetch_assoc($name_results);
-                        echo "<li><a href = 'special/sp_form.php?q=$sub_com&&choice=$choice'>". $comb_name['sp_comb_name'] . "</a></li>";
-                    }
-                }
-                else{
-                    echo "<p>Not Selected</p>";
-                }
+                <div class="select-com">
+                    <button class="select-button">3.COMB: 1A</button>
+                    <div class="status-notfilled">Not Filled</div>
+                </div>
+            </div>
+            <!-- Joint Major Subjects -->
+            <!-- Joint Major Subjects -->
+            <!-- Joint Major Subjects -->
 
-                if(!empty($row['sp_choice_2'])){
-                    $sub_com = $row["sp_choice_2"];
-                    $choice = 2;
-                    $special_query = "SELECT sp_comb_id, sp_comb_name FROM sp_combinations_table WHERE sp_comb_id = '$sub_com'";
-                    $name_results = mysqli_query($conn, $special_query);
-                    if(mysqli_num_rows($name_results) > 0){
-                        $comb_name = mysqli_fetch_assoc($name_results);
-                        echo "<li><a href = 'special/sp_form.php?q=$sub_com&&choice=$choice'>". $comb_name['sp_comb_name'] . "</a></li>";
-                    }
-                }
-                if(!empty($row['sp_choice_3'])){
-                    $sub_com = $row["sp_choice_3"];
-                    $choice = 3;
-                    $special_query = "SELECT sp_comb_id, sp_comb_name FROM sp_combinations_table WHERE sp_comb_id = '$sub_com'";
-                    $name_results = mysqli_query($conn, $special_query);
-                    if(mysqli_num_rows($name_results) > 0){
-                        $comb_name = mysqli_fetch_assoc($name_results);
-                        echo "<li><a href = 'special/sp_form.php?q=$sub_com&&choice=$choice'>". $comb_name['sp_comb_name'] . "</a></li>";
-                    }
-                }
-            }
-            echo "</ol>";
-        }
+            <div class="div-colomn">
+                <div class="header">Joint Major Subjects</div>
 
+                <?php
 
-            // 
-            // Printing Joint Major subjects
-            // 
+                $get_jm_choices = "SELECT jm_choice_1, jm_choice_2, jm_choice_3 FROM selection_form_table WHERE student_index_number = $current_index";
+                $jm_result = mysqli_query($conn, $get_jm_choices);
 
-            echo "<h4>Joint Major Subjects</h4>";
+                // Application Data
+                $get_jm_app = "SELECT jm_choice_1, jm_choice_2, jm_choice_3 FROM selection_application_table WHERE student_index_number = $current_index";
+                $jm_application_result = mysqli_query($conn, $get_jm_app);
 
-            $get_jm_choices = "SELECT jm_choice_1, jm_choice_2, jm_choice_3 FROM selection_form_table WHERE student_index_number = $current_index";
-            $jm_result = mysqli_query($conn,$get_jm_choices);
+                if (mysqli_num_rows($jm_result) > 0) {
+                    $app_row = array();
+                    $app_row = mysqli_fetch_assoc($jm_application_result);
+                    while ($row = mysqli_fetch_assoc($jm_result)) {
+                        if (!empty($row['jm_choice_1'])) {
+                            $sub_com = $row["jm_choice_1"];
+                            $choice = 1;
+                            $status = "";
 
-            // Application Data
-            $get_jm_app = "SELECT jm_choice_1, jm_choice_2, jm_choice_3 FROM selection_application_table WHERE student_index_number = $current_index";
-            $jm_application_result = mysqli_query($conn,$get_jm_app);
-
-            if(mysqli_num_rows($jm_result) > 0){
-                echo "<ol>";
-                $app_row = array();
-                $app_row = mysqli_fetch_assoc($jm_application_result);
-                while($row = mysqli_fetch_assoc($jm_result)){
-                    if(!empty($row['jm_choice_1'])){
-                        $sub_com = $row["jm_choice_1"];
-                        $choice = 1;
-                        $status = "";
-
-                        // Application
-                        if(mysqli_num_rows($jm_application_result) > 0){
-                            // while($app_row = mysqli_fetch_assoc($jm_application_result)){
-                                if(!empty($app_row['jm_choice_1'])){
-                                    $status = " - Filled - DONE";
+                            // Application
+                            if (mysqli_num_rows($jm_application_result) > 0) {
+                                // while($app_row = mysqli_fetch_assoc($jm_application_result)){
+                                if (!empty($app_row['jm_choice_1'])) {
+                                    $status = "Filled";
+                                } else {
+                                    $status = "Not Filled";
                                 }
-                                else {
-                                    $status = " - Not Filled";
-                                }
-                            // }
-                        }
-                        else{
-                            $status = " - Not Filled";
+                                // }
+                            } else {
+                                $status = "Not Filled";
+                            }
+
+                            $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
+                            $name_results = mysqli_query($conn, $jmajor_query);
+                            if (mysqli_num_rows($name_results) > 0) {
+                                $comb_name = mysqli_fetch_assoc($name_results);
+                                // echo "<li><a href = 'joint_major/jm_form.php?q=$sub_com&&choice=$choice'>" . $comb_name['jm_comb_name'] . "</a>" . $status . "</li>";
+                                echo '
+                                <div class="select-com">
+                                    <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">1. ' . $comb_name['jm_comb_name'] . '</button>
+                                    <div class="status-notfilled">' . $status . '</div>
+                                </div>
+                                ';
+                            }
+                        } else {
+                            echo "<p>Not Selected</p>";
                         }
 
-                        $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
-                        $name_results = mysqli_query($conn, $jmajor_query);
-                        if(mysqli_num_rows($name_results) > 0){
-                            $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'joint_major/jm_form.php?q=$sub_com&&choice=$choice'>". $comb_name['jm_comb_name'] . "</a>".$status."</li>";
+                        if (!empty($row['jm_choice_2'])) {
+                            $sub_com = $row["jm_choice_2"];
+                            $choice = 2;
 
-                        }
-                    }
-                    else{
-                        echo "<p>Not Selected</p>";                        
-                    }
-
-                    if(!empty($row['jm_choice_2'])){
-                        $sub_com = $row["jm_choice_2"];
-                        $choice = 2;
-
-                        // Application
-                        $status = "";
-                        if(mysqli_num_rows($jm_application_result) > 0){
-                            // while($app_row = mysqli_fetch_assoc($jm_application_result)){
-                                if(!empty($app_row['jm_choice_2'])){
-                                    $status = " - Filled - DONE";
+                            // Application
+                            $status = "";
+                            if (mysqli_num_rows($jm_application_result) > 0) {
+                                // while($app_row = mysqli_fetch_assoc($jm_application_result)){
+                                if (!empty($app_row['jm_choice_2'])) {
+                                    $status = "Filled";
+                                } else {
+                                    $status = "Not Filled";
                                 }
-                                else {
-                                    $status = " - Not Filled";
-                                }
-                            // }
-                        }
-                        else{
-                            $status = " - Not Filled";
-                        } 
+                                // }
+                            } else {
+                                $status = "Not Filled";
+                            }
 
-                        $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
-                        $name_results = mysqli_query($conn, $jmajor_query);
-                        if(mysqli_num_rows($name_results) > 0){
-                            $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'joint_major/jm_form.php?q=$sub_com&&choice=$choice'>". $comb_name['jm_comb_name'] . "</a>".$status."</li>";
+                            $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
+                            $name_results = mysqli_query($conn, $jmajor_query);
+                            if (mysqli_num_rows($name_results) > 0) {
+                                $comb_name = mysqli_fetch_assoc($name_results);
+                                echo '
+                                <div class="select-com">
+                                    <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">2. ' . $comb_name['jm_comb_name'] . '</button>
+                                    <div class="status-notfilled">' . $status . '</div>
+                                </div>
+                                ';
+                            }
                         }
-                    }
-                    if(!empty($row['jm_choice_3'])){
-                        $sub_com = $row["jm_choice_3"];
-                        $choice = 3;
+                        if (!empty($row['jm_choice_3'])) {
+                            $sub_com = $row["jm_choice_3"];
+                            $choice = 3;
 
-                        // Application
-                        $status = "";
-                        if(mysqli_num_rows($jm_application_result) > 0){
-                            // while($app_row = mysqli_fetch_assoc($jm_application_result)){
-                                if(!empty($app_row['jm_choice_3'])){
-                                    $status = " - Filled - DONE";
+                            // Application
+                            $status = "";
+                            if (mysqli_num_rows($jm_application_result) > 0) {
+                                if (!empty($app_row['jm_choice_3'])) {
+                                    $status = "Filled";
+                                } else {
+                                    $status = "Not Filled";
                                 }
-                                else {
-                                    $status = " - Not Filled";
-                                }
-                            // }
-                        }
-                        else{
-                            $status = " - Not Filled";
-                        } 
+                                // }
+                            } else {
+                                $status = "Not Filled";
+                            }
 
-                        $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
-                        $name_results = mysqli_query($conn, $jmajor_query);
-                        if(mysqli_num_rows($name_results) > 0){
-                            $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'joint_major/jm_form.php?q=$sub_com&&choice=$choice'>". $comb_name['jm_comb_name'] . "</a>".$status."</li>";
+                            $jmajor_query = "SELECT jm_comb_id, jm_comb_name FROM jm_combinations_table WHERE jm_comb_id = '$sub_com'";
+                            $name_results = mysqli_query($conn, $jmajor_query);
+                            if (mysqli_num_rows($name_results) > 0) {
+                                $comb_name = mysqli_fetch_assoc($name_results);
+
+                                echo '
+                            <div class="select-com">
+                                <button onclick = "location.href = \'joint_major/jm_form.php?q=' . $sub_com . '&&choice=' . $choice . '\'" class="select-button">3. ' . $comb_name['jm_comb_name'] . '</button>
+                                <div class="status-notfilled">' . $status . '</div>
+                            </div>
+                            ';
+                            }
                         }
                     }
                 }
-                echo "</ol>";
-            }
 
 
-            // 
-            // Printing General subjects
-            // 
+                ?>
+            </div>
 
-            echo "<h4>General Subjects</h4>";
+            <!-- <div class="div-colomn">
+                <div class="header">Joint Major Subjects</div>
+                <div class="select-com">
+                    <button class="select-button">1.COMB: 1A</button>
+                    <div class="status-notfilled">Not Filled</div>
+                </div>
 
-            $get_gn_choices = "SELECT gn_choice_1, gn_choice_2, gn_choice_3 FROM selection_form_table WHERE student_index_number = $current_index";
+                <div class="select-com">
+                    <button class="select-button">2.COMB: 1A</button>
+                    <div class="status-filled">Filled</div>
+                </div>
+
+                <div class="select-com">
+                    <button class="select-button">3.COMB: 1A</button>
+                    <div class="status-notfilled">Not Filled</div>
+                </div>
+            </div> -->
+            <!-- General Subjects -->
+            <!-- General Subjects -->
+            <!-- General Subjects -->
+            <div class="div-colomn">
+                <div class="header">General Subjects</div>
+
+                <?php
+                
+                $get_gn_choices = "SELECT gn_choice_1, gn_choice_2, gn_choice_3 FROM selection_form_table WHERE student_index_number = $current_index";
             $gn_result = mysqli_query($conn,$get_gn_choices);
 
             // Application Data
@@ -297,7 +220,6 @@ if(mysqli_num_rows($result) == 0){
             
             if(mysqli_num_rows($gn_result) > 0){
                 $app_row = array();
-                echo "<ol>";
                 $app_row = mysqli_fetch_assoc($gn_application_result);
                 while($row = mysqli_fetch_assoc($gn_result)){
                     if(!empty($row['gn_choice_1'])){
@@ -309,15 +231,15 @@ if(mysqli_num_rows($result) == 0){
                         if(mysqli_num_rows($gn_application_result) > 0){
                             // while($app_row = mysqli_fetch_assoc($gn_application_result)){
                                 if(!empty($app_row['gn_choice_1'])){
-                                    $status = " - Filled - DONE";
+                                    $status = "Filled";
                                 }
                                 else {
-                                    $status = " - Not Filled";
+                                    $status = "Not Filled";
                                 }
                             // }
                         }
                         else{
-                            $status = " - Not Filled";
+                            $status = "Not Filled";
                         }
                         
                         
@@ -325,11 +247,16 @@ if(mysqli_num_rows($result) == 0){
                         $name_results = mysqli_query($conn, $general_query);
                         if(mysqli_num_rows($name_results) > 0){
                             $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'general/gn_form.php?q=$sub_com&&choice=$choice'>". $comb_name['gn_comb_name'] . "</a>".$status."</li>";
+                            echo '
+                            <div class="select-com">
+                                <button class="select-button" onclick = "location.href = \'general/gn_form.php?q='.$sub_com.'&&choice='.$choice.'\'">1. '.$comb_name['gn_comb_name'].'</button>
+                                <div class="status-notfilled">'.$status.'</div>
+                            </div>
+                            ';
                         }
                     }
                     else {
-                        echo "<p>Not Selected</p>";
+                        echo "<center><p class='status-notfilled'>Not Selected</p></center>";
                     }
                     if(!empty($row['gn_choice_2'])){
                         $sub_com = $row["gn_choice_2"];
@@ -340,15 +267,15 @@ if(mysqli_num_rows($result) == 0){
                         if(mysqli_num_rows($gn_application_result) > 0){
                             // while($app_row = mysqli_fetch_assoc($gn_application_result)){
                                 if(!empty($app_row['gn_choice_2'])){
-                                    $status = " - Filled - DONE";
+                                    $status = "Filled";
                                 }
                                 else {
-                                    $status = " - Not Filled";
+                                    $status = "Not Filled";
                                 }
                             // }
                         }
                         else{
-                            $status = " - Not Filled";
+                            $status = "Not Filled";
                         }
 
 
@@ -356,7 +283,12 @@ if(mysqli_num_rows($result) == 0){
                         $name_results = mysqli_query($conn, $general_query);
                         if(mysqli_num_rows($name_results) > 0){
                             $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'general/gn_form.php?q=$sub_com&&choice=$choice'>". $comb_name['gn_comb_name'] . "</a>".$status."</li>";
+                            echo '
+                            <div class="select-com">
+                                <button class="select-button" onclick = "location.href = \'general/gn_form.php?q='.$sub_com.'&&choice='.$choice.'\'">2. '.$comb_name['gn_comb_name'].'</button>
+                                <div class="status-notfilled">'.$status.'</div>
+                            </div>
+                            ';
                         }
                     }
                     if(!empty($row['gn_choice_3'])){
@@ -369,32 +301,64 @@ if(mysqli_num_rows($result) == 0){
                             
                             // while($app_row = mysqli_fetch_assoc($gn_application_result)){
                                 if(!empty($app_row['gn_choice_3'])){
-                                    $status = " - Filled - DONE";
+                                    $status = "Filled";
                                 }
                                 else {
-                                    $status = " - Not Filled";
+                                    $status = "Not Filled";
                                 }
                             // }
                         }
                         else{
-                            $status = " - Not Filled";
+                            $status = "Not Filled";
                         }
 
                         $general_query = "SELECT gn_comb_id, gn_comb_name FROM gn_combinations_table WHERE gn_comb_id = '$sub_com'";
                         $name_results = mysqli_query($conn, $general_query);
                         if(mysqli_num_rows($name_results) > 0){
                             $comb_name = mysqli_fetch_assoc($name_results);
-                            echo "<li><a href = 'general/gn_form.php?q=$sub_com&&choice=$choice'>". $comb_name['gn_comb_name'] . "</a>".$status."</li>";
+                            echo '
+                            <div class="select-com">
+                                <button class="select-button" onclick = "location.href = \'general/gn_form.php?q='.$sub_com.'&&choice='.$choice.'\'">3. '.$comb_name['gn_comb_name'].'</button>
+                                <div class="status-notfilled">'.$status.'</div>
+                            </div>
+                            ';
                         }
                     }
                 }
-                echo "</ol>";
             }
-            
-        ?>
+                
+                ?>
+
+                <!-- <div class="select-com">
+                    <button class="select-button">1.COMB: 1A</button>
+                    <div class="status-notfilled">Not Filled</div>
+                </div> -->
+
+                <!-- <div class="select-com">
+                    <button class="select-button">2.COMB: 1A</button>
+                    <div class="status-filled">Filled</div>
+                </div>
+
+                <div class="select-com">
+                    <button class="select-button">3.COMB: 1A</button>
+                    <div class="status-filled">Filled</div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="footer-row">
+            <form action="clear_all.php" method="POST">
+                <input class="sub-btn" type="submit"  value="Clear All" onclick="return confirm('Do you want to clear all the following data? Press OK to continue.')">
+            </form>
+            <form action="" method="">
+                <input class="sub-btn" type="submit"  value="Submit" onclick="return confirm('Do you want to clear all the following data? Press OK to continue.')">
+            </form>
+            <!-- <button class="sub-btn">Clear</button> -->
+            <!-- <button class="sub-btn">Submit</button> -->
+        </div>
+
     </div>
-    <form action="clear_all.php" method="POST">
-        <input type="submit" value="Clear All" onclick="return confirm('Do you want to clear all the following data? Press OK to continue.')">
-    </form>
+
 </body>
+
 </html>
