@@ -71,7 +71,7 @@ if (!isset($_SESSION["current_student_id"])) {
             <div class="id">
                 <?php echo $_SESSION['current_student_nic'] ?>
             </div>
-            <button class="change-btn">Change Passwaord</button>
+            <button class="change-btn" onclick="location.href ='../change_password'">Change Password</button>
         </div>
     </div>
 
