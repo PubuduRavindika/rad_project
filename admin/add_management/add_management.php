@@ -6,7 +6,7 @@
         $nic_number = $_POST['nic_number'];
         $email = $_POST['email'];
 
-        $insert_ma = "INSERT INTO admin_table (admin_name, admin_nic, admin_email, admin_password, admin_type, first_time_login) VALUES ('$name', '$nic_number', '$email','$nic_number','hod','1')";
+        $insert_ma = "INSERT INTO admin_table (admin_name, admin_nic, admin_email, admin_password, admin_type, first_time_login) VALUES ('$name', '$nic_number', '$email','$nic_number','ma','1')";
 
         if(mysqli_query($conn ,$insert_ma)){
             // header();

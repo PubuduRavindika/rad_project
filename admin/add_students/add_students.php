@@ -7,63 +7,64 @@
     }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
     <title>Document</title>
 </head>
-<body>
-    Add New Students
-    <form action="action_csv_students_adder.php" method = "POST"  enctype="multipart/form-data">
-    <?php
-    
-        // $get_table_query = "SELECT * FROM student_table";
-        // if($q_return = mysqli_query($conn, $get_table_query)){
-        //     while($tables = mysqli_fetch_assoc($q_return)){
-        //         echo '
-        //         <input type="radio" name="academic_year" id="'.$tables['table_id'].'" value = "'.$tables['table_id'].'" required>
-        //         <label for="'.$tables['table_id'].'">Academic Year '.$tables['table_name'].'</label>
-                
-        //         ';
-        //     }
-        // }
+<body class="sr-body">
+    <div class="container">
+        <header class="rf-header">Add New Students</header>
+        <label>Accepted CSV Format</label>
+        <img class="csv-image" src="csv_format.jpg" alt="Accepted CSV format"> 
+        <form class="sr-form" action="action_csv_students_adder.php" method = "POST"  enctype="multipart/form-data">
+            <div class="sr-csv-submit">
+                <label for="file">Select CSV file:</label>
+                <input type="file" name="file" id="file" accept=".csv" required>
+                <!-- <button onclick="defaultbtnactive()" class="custom-btn" id="custom-btn">Choose a file</button> -->
+                <button type = "submit" name = "Import">Submit</button>
+            </div>  
+        </form>
+        <form action="action_students_adder.php" method = "POST">
+            <div class="line"></div>
+            
+            <div class="sr-input-box">
+                <label class="sr-lable">Index</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" id = "index" name = "index" required>
+            </div>
 
-    ?>
-        <br />
-        <p>Accepted CSV format:</p>
-        <img src="../../assets/images/csv_format.jpg" alt="Accepted CSV format">
-        <br />
-        <label for="file">Select CSV file:</label>
-        <input type="file" name="file" id="file" accept=".csv" required>
-        <button type = "submit" name = "Import">Submit</button>
+            <div class="sr-input-box">
+                <label class="sr-lable">Name with Initials</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" name = "name" id = "name" required>
+            </div>
 
-    </form>
-    <p>-- or --</p>
-    <form action="action_students_adder.php" method = "POST" style = "display:flex; flex-direction:column;">
-        <label for="index">Index: </label>
-        <input type="text" id = "index" name = "index" required>
+            <div class="sr-input-box">
+                <label class="sr-lable">NIC Number</label>
+                <input class="sr-input" type="text" placeholder="Enter full name" name = "nic_number" id = "nic_number" required>
+            </div>
 
-        <label for="name">Name with Initials: </label>
-        <input type="text" name = "name" id = "name" required>
+            <div class="sr-input-box">
+                <label class="sr-lable">Base Combination</label>
+                <select class="sr-input" name="combination" id = "combination" required>
+                    <option value = "1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                </select>
+            </div>
 
-        <label for="nic_number">NIC Number: </label>
-        <input type="text" name = "nic_number" id = "nic_number" required>
+            <div class="sr-input-box">
+                <label class="sr-lable">Batch ID</label>
+                <input class="sr-input" type="number" placeholder="Enter full name" name = "batch_id" id = "batch_id" required>
+            </div>
 
-        <label for="combination">Base Combination: </label>
-        <select name = "combination" id = "combination" required>
-            <option value = "1">1</option>
-            <option value = "2">2</option>
-            <option value = "3">3</option>
-        </select>
+            <button type = "submit" name = "Import">Submit</button>
 
-        <label for="batch_id">Batch ID: </label>
-        <input type="number" name = "batch_id" id = "batch_id" required>
+        </form>
 
-        <input type="submit" value="Submit">
-    </form>
-        
+    </div>
 </body>
 </html>

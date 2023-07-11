@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-item">
                         <label for="password" class="password-label">Enter Password</label>
-                        <input type="pssaword" id="password" class="password" name="password">                        
+                        <input type="password" id="password" class="password" name="password">                        
                     </div>
                     <div class="form-item">
                         <a href="#" class="a-fogetpassword">Forgotten Password?</a>
