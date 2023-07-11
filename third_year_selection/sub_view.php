@@ -50,17 +50,7 @@ if (mysqli_num_rows($result) == 0) {
             <div class="div-colomn">
                 <div class="header">Special Subjects</div>
                 <div class="select-com">
-                    <button class="select-button">1.COMB: 1A</button>
-                    <div class="status-notfilled">Not Filled</div>
-                </div>
-
-                <div class="select-com">
-                    <button class="select-button">2.COMB: 1A</button>
-                    <div class="status-filled">Filled</div>
-                </div>
-
-                <div class="select-com">
-                    <button class="select-button">3.COMB: 1A</button>
+                    <button class="select-button">1. CMIS</button>
                     <div class="status-notfilled">Not Filled</div>
                 </div>
             </div>
