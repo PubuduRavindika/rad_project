@@ -258,6 +258,9 @@ if(mysqli_num_rows($result) > 0){
                     </div>
                 </div>
             </div>
+            <!-- <input type="button" class="button" value ="details"> -->
+            <br/>
+            <p  style="margin:auto; text-align:center;"><a href = "details.png" style="color: white; font-size: 18px;" target="_blank">VIEW DETAILS</a></p>
             <input class="button" type="submit" value="Submit">
         </form>
     </div>
