@@ -34,17 +34,17 @@
             
             <div class="sr-input-box">
                 <label class="sr-lable">Index</label>
-                <input class="sr-input" type="text" placeholder="Enter full name" id = "index" name = "index" required>
+                <input class="sr-input" type="text" placeholder="Index" id = "index" name = "index" required>
             </div>
 
             <div class="sr-input-box">
                 <label class="sr-lable">Name with Initials</label>
-                <input class="sr-input" type="text" placeholder="Enter full name" name = "name" id = "name" required>
+                <input class="sr-input" type="text" placeholder="Name with Initials" name = "name" id = "name" required>
             </div>
 
             <div class="sr-input-box">
                 <label class="sr-lable">NIC Number</label>
-                <input class="sr-input" type="text" placeholder="Enter full name" name = "nic_number" id = "nic_number" required>
+                <input class="sr-input" type="text" placeholder="NIC Number" name = "nic_number" id = "nic_number" required>
             </div>
 
             <div class="sr-input-box">
@@ -58,7 +58,7 @@
 
             <div class="sr-input-box">
                 <label class="sr-lable">Batch ID</label>
-                <input class="sr-input" type="number" placeholder="Enter full name" name = "batch_id" id = "batch_id" required>
+                <input class="sr-input" type="number" placeholder="Batch ID" name = "batch_id" id = "batch_id" required>
             </div>
 
             <button type = "submit" name = "Import">Submit</button>

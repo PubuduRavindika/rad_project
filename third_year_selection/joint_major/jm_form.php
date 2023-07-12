@@ -10,12 +10,12 @@ if(isset($_GET["q"]) && isset($_GET["choice"])){
     $_SESSION["jm_comb"] = $jmajor_comb;
     $_SESSION["jm_choice"] = $comb_choice;
 
-    echo "Choice: ".$comb_choice." <br />";
+    // echo "Choice: ".$comb_choice." <br />";
     // $jmajor_query = "SELECT jm_code,jm_major_1, jm_major_2 FROM jm_table WHERE jm_code = '$jmajor_comb'";
     $jmajor_query = "SELECT jm_comb_id, jm_comb_name, major_1_id, major_2_id FROM jm_combinations_table WHERE jm_comb_id = '$jmajor_comb'";
         if($q_return = mysqli_query($conn, $jmajor_query)){
             $jmajor_result = mysqli_fetch_assoc($q_return);
-            echo "COMB ".$jmajor_result['jm_comb_id']."  ".$jmajor_result['jm_comb_name'];
+            // echo "COMB ".$jmajor_result['jm_comb_id']."  ".$jmajor_result['jm_comb_name'];
         }
     $get_major_1_query = "SELECT major_name FROM jm_majors_table WHERE major_id = ". $jmajor_result['major_1_id'];
     $get_major_2_query = "SELECT major_name FROM jm_majors_table WHERE major_id = ". $jmajor_result['major_2_id'];

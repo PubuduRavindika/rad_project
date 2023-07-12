@@ -56,6 +56,7 @@
                 </table>
            ";
         }
+        header("location:../dashboard/admin_dashboard.php");
     }
     ?>
 

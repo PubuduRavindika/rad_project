@@ -23,7 +23,7 @@ if (isset($_SESSION["current_student_id"])) {
     <div class="container">
         <div class="login-left">
             <div class="login-header">
-                <h1 class="h1-header">Welcome to Students Registration</h1>
+                <h1 class="h1-header">Course Registration System</h1>
                 <p class="p-header">E-Registration System - WUSL</p>
             </div>
             <form class="login-form" action="login_validation.php" method="post">
@@ -43,7 +43,11 @@ if (isset($_SESSION["current_student_id"])) {
                     </div>
                     <div class="form-item">
                         <!-- <a href="#" class="a-fogetpassword">Forgotten Password?</a> -->
-                        <a href="../staff/login/login.php" class="a-fogetpassword">Login as Staff Member</a>
+                        <p>
+                            <a href="../staff/login/login.php" class="a-fogetpassword">Login as Staff Member</a>
+                            <br />
+                            <a href="../admin/login/login.php" class="a-fogetpassword">Login as Administrator</a>
+                        </p>
                     </div>
                     <div class="form-item">
                         <div class="checkbox">

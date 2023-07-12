@@ -31,8 +31,8 @@
         </div>
         <div class="nav_details">
             <span>
-                <p>W.M.D.I. Wijesundara</p>
-                <div class="nav_btn_holder"><span>192153</span><button>LOGOUT</button></div>
+                <p>Administrator</p>
+                <div class="nav_btn_holder"><button onclick="location.href='../logout/action_admin_logout.php'" >LOGOUT</button></div>
             </span>
             <img src="profile-2.png" alt="">
         </div>
@@ -40,7 +40,7 @@
 
 
     <div class="container">
-        <header class="rf-header">Add Management Assistants</header>
+        <header class="rf-header">Add Student Counsellors</header>
         <form action="" method="POST">
             
             <div class="sr-input-box">

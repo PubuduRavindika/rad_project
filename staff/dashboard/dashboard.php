@@ -13,8 +13,8 @@
         </div>
         <div class="nav_details">
             <span>
-                <p>W.M.D.I. Wijesundara</p>
-                <div class="nav_btn_holder"><span>192153</span><button>LOGOUT</button></div>
+                <p>Staff Member</p>
+                <div class="nav_btn_holder"><button onclick="location.href='../logout/action_admin_logout.php'">LOGOUT</button></div>
             </span>
             <img src="profile-2.png" alt="">
         </div>
@@ -23,7 +23,7 @@
     <div class="main-container">
         <div class="headder">Third Year Selection Filled Forms</div>
         <div class="application">
-            <img class="app-img" src="profile-2.png" alt="">
+            <img class="app-img" src="profile-3.png" alt="">
             <div class="details">192153</div>
             <div class="details">Wijesundara W.M.D.I.</div>
             <div class="details">3rd Year Selection</div>

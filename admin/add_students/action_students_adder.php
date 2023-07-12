@@ -28,6 +28,7 @@ if(isset($_POST['index']) && isset($_POST['name']) && isset($_POST['nic_number']
 
     if(mysqli_query($conn,$student_add_query)){
         echo "Success";
+        header("location:../dashboard/admin_dashboard.php");
     }
     else{
         echo "Something went wrong!!";
