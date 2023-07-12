@@ -341,7 +341,7 @@ if (mysqli_num_rows($result) == 0) {
                 <input class="sub-btn" type="submit"  value="Clear All" onclick="return confirm('Do you want to clear all the following data? Press OK to continue.')">
             </form>
             <form action="" method="">
-                <input class="sub-btn" type="submit"  value="Submit" onclick="return confirm('Do you want to clear all the following data? Press OK to continue.')">
+                <input class="sub-btn" type="button"  value="Submit" onclick="location.href = 'joint_major/view_apps/dashboard.php'">
             </form>
             <!-- <button class="sub-btn">Clear</button> -->
             <!-- <button class="sub-btn">Submit</button> -->
